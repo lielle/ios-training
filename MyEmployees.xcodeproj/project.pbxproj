@@ -15,6 +15,10 @@
 		B08BBF5124EF7A0100835AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08BBF4F24EF7A0100835AF0 /* LaunchScreen.storyboard */; };
 		B08BBF5C24EF7A0200835AF0 /* MyEmployeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF5B24EF7A0200835AF0 /* MyEmployeesTests.swift */; };
 		B08BBF6724EF7A0200835AF0 /* MyEmployeesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF6624EF7A0200835AF0 /* MyEmployeesUITests.swift */; };
+		B08BBF7924EF7D9F00835AF0 /* SplashscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF7724EF7D9F00835AF0 /* SplashscreenController.swift */; };
+		B08BBF7A24EF7D9F00835AF0 /* SplashscreenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08BBF7824EF7D9F00835AF0 /* SplashscreenController.xib */; };
+		B08BBF8224EF804500835AF0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF8024EF804500835AF0 /* LoginController.swift */; };
+		B08BBF8324EF804500835AF0 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08BBF8124EF804500835AF0 /* LoginController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		B08BBF6224EF7A0200835AF0 /* MyEmployeesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyEmployeesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08BBF6624EF7A0200835AF0 /* MyEmployeesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEmployeesUITests.swift; sourceTree = "<group>"; };
 		B08BBF6824EF7A0200835AF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B08BBF7724EF7D9F00835AF0 /* SplashscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenController.swift; sourceTree = "<group>"; };
+		B08BBF7824EF7D9F00835AF0 /* SplashscreenController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashscreenController.xib; sourceTree = "<group>"; };
+		B08BBF8024EF804500835AF0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		B08BBF8124EF804500835AF0 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +107,11 @@
 		B08BBF4324EF79FD00835AF0 /* MyEmployees */ = {
 			isa = PBXGroup;
 			children = (
+				B08BBF8424EF9A3C00835AF0 /* Login */,
+				B08BBF7624EF7D6A00835AF0 /* Splashscreen */,
 				B08BBF4424EF79FD00835AF0 /* AppDelegate.swift */,
 				B08BBF4624EF79FD00835AF0 /* SceneDelegate.swift */,
-				B08BBF4824EF79FD00835AF0 /* ViewController.swift */,
-				B08BBF4A24EF79FD00835AF0 /* Main.storyboard */,
+				B08BBF8524EF9F6F00835AF0 /* Main */,
 				B08BBF4D24EF7A0100835AF0 /* Assets.xcassets */,
 				B08BBF4F24EF7A0100835AF0 /* LaunchScreen.storyboard */,
 				B08BBF5224EF7A0100835AF0 /* Info.plist */,
@@ -126,6 +135,33 @@
 				B08BBF6824EF7A0200835AF0 /* Info.plist */,
 			);
 			path = MyEmployeesUITests;
+			sourceTree = "<group>";
+		};
+		B08BBF7624EF7D6A00835AF0 /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				B08BBF7724EF7D9F00835AF0 /* SplashscreenController.swift */,
+				B08BBF7824EF7D9F00835AF0 /* SplashscreenController.xib */,
+			);
+			path = Splashscreen;
+			sourceTree = "<group>";
+		};
+		B08BBF8424EF9A3C00835AF0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B08BBF8024EF804500835AF0 /* LoginController.swift */,
+				B08BBF8124EF804500835AF0 /* LoginController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B08BBF8524EF9F6F00835AF0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B08BBF4A24EF79FD00835AF0 /* Main.storyboard */,
+				B08BBF4824EF79FD00835AF0 /* ViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +270,8 @@
 			files = (
 				B08BBF5124EF7A0100835AF0 /* LaunchScreen.storyboard in Resources */,
 				B08BBF4E24EF7A0100835AF0 /* Assets.xcassets in Resources */,
+				B08BBF7A24EF7D9F00835AF0 /* SplashscreenController.xib in Resources */,
+				B08BBF8324EF804500835AF0 /* LoginController.xib in Resources */,
 				B08BBF4C24EF79FD00835AF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +299,9 @@
 			files = (
 				B08BBF4924EF79FD00835AF0 /* ViewController.swift in Sources */,
 				B08BBF4524EF79FD00835AF0 /* AppDelegate.swift in Sources */,
+				B08BBF7924EF7D9F00835AF0 /* SplashscreenController.swift in Sources */,
 				B08BBF4724EF79FD00835AF0 /* SceneDelegate.swift in Sources */,
+				B08BBF8224EF804500835AF0 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
