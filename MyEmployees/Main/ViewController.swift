@@ -10,15 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var progressView: UIProgressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Thread.sleep(forTimeInterval: 2.0)
-        let controller = LoginController()
-        controller.modalPresentationStyle = .overCurrentContext
-        self.present(controller, animated: true, completion: nil)
+        self.progressView.setAnimatedProgress(duration: 2) {
+            let controller = LoginController()
+            controller.modalPresentationStyle = .overCurrentContext
+            self.present(controller, animated: true, completion: nil)
+        }
     }
 
 }
