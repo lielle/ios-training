@@ -117,4 +117,38 @@ extension DatabaseHelper {
         return password
     }
     
+    func fetchCompanyBy(username: String) -> Company? {
+        let queryStatementString = "SELECT id, name, username, password, contact, address, logo FROM company WHERE username=?;"
+        var queryStatement: OpaquePointer? = nil
+        var company: Company? = nil
+        
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            
+            sqlite3_bind_text(queryStatement, 1, (username as NSString).utf8String, -1, nil)
+            
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                
+                let id = Int(sqlite3_column_int(queryStatement, 0))
+                let name = String(cString: sqlite3_column_text(queryStatement, 1))
+                let username = String(cString: sqlite3_column_text(queryStatement, 2))
+                let password = String(cString: sqlite3_column_text(queryStatement, 3))
+                let contact = String(cString: sqlite3_column_text(queryStatement, 4))
+                let address = String(cString: sqlite3_column_text(queryStatement, 5))
+                let logo = String(cString: sqlite3_column_text(queryStatement, 6))
+                
+                print("Query Result:")
+                print("\(id)")
+                
+                company = Company(id: id, name: name, username: username, password: password, contact: contact, address: address, logoKey: logo)
+            }
+            
+        } else {
+            print("SELECT statement could not be prepared")
+        }
+        
+        sqlite3_finalize(queryStatement)
+        
+        return company
+    }
+    
 }

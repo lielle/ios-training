@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashscreenController" customModule="MyEmployees" customModuleProvider="target">
             <connections>
+                <outlet property="logoImageView" destination="LpZ-iR-Tr5" id="ojP-KZ-6sc"/>
+                <outlet property="progressView" destination="B4B-sp-0UC" id="A4B-Ft-EiC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,36 +19,41 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="tkg-3Q-wg8">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seN-Ki-fco">
+                    <rect key="frame" x="50" y="307" width="314" height="292"/>
                     <subviews>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="dH0-UN-NKo">
-                            <rect key="frame" x="8" y="884" width="406" height="2"/>
-                        </progressView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ESC Logo" translatesAutoresizingMaskIntoConstraints="NO" id="p2j-XY-qas">
-                            <rect key="frame" x="74.5" y="8" width="265" height="644.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Logo" translatesAutoresizingMaskIntoConstraints="NO" id="LpZ-iR-Tr5">
+                            <rect key="frame" x="56.5" y="8" width="201" height="210"/>
                         </imageView>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="B4B-sp-0UC">
+                            <rect key="frame" x="8" y="280" width="306" height="2"/>
+                        </progressView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="dH0-UN-NKo" firstAttribute="leading" secondItem="tkg-3Q-wg8" secondAttribute="leading" constant="8" id="1C5-9e-o41"/>
-                        <constraint firstItem="p2j-XY-qas" firstAttribute="height" secondItem="tkg-3Q-wg8" secondAttribute="height" multiplier="0.719101" id="Ibt-2w-MIk"/>
-                        <constraint firstItem="p2j-XY-qas" firstAttribute="width" secondItem="tkg-3Q-wg8" secondAttribute="width" multiplier="0.640127" id="KTI-8E-q9Z"/>
-                        <constraint firstAttribute="trailing" secondItem="dH0-UN-NKo" secondAttribute="trailing" id="Lmq-ti-jx8"/>
-                        <constraint firstAttribute="bottom" secondItem="dH0-UN-NKo" secondAttribute="bottom" constant="10" id="PH7-6U-O72"/>
-                        <constraint firstItem="p2j-XY-qas" firstAttribute="centerX" secondItem="tkg-3Q-wg8" secondAttribute="centerX" id="dFf-3O-GkG"/>
-                        <constraint firstItem="p2j-XY-qas" firstAttribute="top" secondItem="tkg-3Q-wg8" secondAttribute="top" constant="8" id="ycB-He-jA1"/>
+                        <constraint firstItem="LpZ-iR-Tr5" firstAttribute="centerX" secondItem="seN-Ki-fco" secondAttribute="centerX" id="6Mb-fk-pvq"/>
+                        <constraint firstAttribute="trailing" secondItem="B4B-sp-0UC" secondAttribute="trailing" id="8Jp-P3-Bns"/>
+                        <constraint firstItem="LpZ-iR-Tr5" firstAttribute="height" secondItem="seN-Ki-fco" secondAttribute="height" multiplier="0.719101" id="cTn-Rq-19h"/>
+                        <constraint firstItem="LpZ-iR-Tr5" firstAttribute="width" secondItem="seN-Ki-fco" secondAttribute="width" multiplier="0.640127" id="edM-da-FUt"/>
+                        <constraint firstItem="B4B-sp-0UC" firstAttribute="leading" secondItem="seN-Ki-fco" secondAttribute="leading" constant="8" id="gaj-yj-xLi"/>
+                        <constraint firstItem="LpZ-iR-Tr5" firstAttribute="top" secondItem="seN-Ki-fco" secondAttribute="top" constant="8" id="sNf-ut-FxZ"/>
+                        <constraint firstAttribute="bottom" secondItem="B4B-sp-0UC" secondAttribute="bottom" constant="10" id="x9y-A6-vtH"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="WFP-JT-cjS"/>
                 </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="seN-Ki-fco" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="B3b-SU-ffD"/>
+                <constraint firstAttribute="trailing" secondItem="seN-Ki-fco" secondAttribute="trailing" constant="50" id="ExG-sj-oUx"/>
+                <constraint firstItem="seN-Ki-fco" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Fjw-3r-FaF"/>
+                <constraint firstItem="seN-Ki-fco" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hh0-Du-6r1"/>
+                <constraint firstItem="seN-Ki-fco" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.326406" id="rst-lB-ilH"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="133" y="98"/>
+            <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
-        <image name="ESC Logo" width="1331" height="1305"/>
+        <image name="No Logo" width="200" height="200"/>
     </resources>
 </document>

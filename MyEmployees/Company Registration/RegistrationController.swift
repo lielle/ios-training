@@ -31,6 +31,11 @@ class RegistrationController: UIViewController {
         super.viewDidAppear(animated)
         scrollView.flashScrollIndicators()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dismiss(animated: false, completion: nil)
+    }
 }
 
 // MARK: - Text Field/View Events

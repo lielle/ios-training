@@ -23,5 +23,10 @@ class ViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dismiss(animated: false, completion: nil)
+    }
 
 }

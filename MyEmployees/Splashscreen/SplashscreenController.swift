@@ -10,21 +10,32 @@ import UIKit
 
 class SplashscreenController: UIViewController {
 
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    private let userPreferences = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard let company = userPreferences.value(Company.self, forKey: "company") else {
+            return
+        }
+        
+        logoImageView.image = getImage(name: company.logoKey!)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.progressView.setAnimatedProgress(duration: 5) {
+            let controller = LoginController()
+            controller.modalPresentationStyle = .overCurrentContext
+            self.present(controller, animated: true, completion: nil)
+        }
     }
-    */
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dismiss(animated: false, completion: nil)
+    }
 
 }

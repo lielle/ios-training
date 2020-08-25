@@ -14,14 +14,28 @@ class LoginController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     private var hashedPassword: String?
+    private let userPreferences = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dismiss(animated: false, completion: nil)
+    }
+    
     @IBAction func onLogin(_ sender: Any) {
         if isLoginValid() {
-            print("Login success")
+            guard let company = DatabaseHelper.shared.fetchCompanyBy(username: usernameField.text!) else {
+                displayOkAlert(title: "Login", message: "Company not found.")
+                return
+            }
+            userPreferences.set(encodable: company, forKey: "company")
+            
+            let controller = SplashscreenController()
+            controller.modalPresentationStyle = .overCurrentContext
+            self.present(controller, animated: true, completion: nil)
         }
     }
     

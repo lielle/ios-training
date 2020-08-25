@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Company: NSObject {
+class Company: NSObject, Codable {
     
     var id: Int?
     var name: String?
