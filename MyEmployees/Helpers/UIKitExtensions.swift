@@ -2,7 +2,7 @@
 //  ProgressViewExtensions.swift
 //  MyEmployees
 //
-//  Created by escience on 8/21/20.
+//  Created by Lielle Bawar on 8/21/20.
 //  Copyright © 2020 escience. All rights reserved.
 //
 
@@ -31,8 +31,10 @@ extension UIProgressView {
     @available(iOS 10.0, *)
     func setAnimatedProgress(progress: Float = 1, duration: Float = 1, completion: (() -> ())? = nil) {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-            let current = self.progress
-            self.setProgress(current + (1/duration), animated: true)
+            DispatchQueue.main.async {
+                let current = self.progress
+                self.setProgress(current + (1/duration), animated: true)
+            }
             if self.progress >= progress {
                 timer.invalidate()
                 if let completion = completion {
@@ -52,6 +54,17 @@ extension UITextView {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
+    }
+    
+}
+
+// MARK: - UITextField
+extension UITextField {
+    
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
     }
     
 }

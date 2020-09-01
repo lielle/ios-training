@@ -2,7 +2,7 @@
 //  Strings.swift
 //  MyEmployees
 //
-//  Created by escience on 8/24/20.
+//  Created by Lielle Bawar on 8/24/20.
 //  Copyright © 2020 escience. All rights reserved.
 //
 
