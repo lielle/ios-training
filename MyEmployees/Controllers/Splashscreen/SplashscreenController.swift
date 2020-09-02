@@ -40,7 +40,7 @@ class SplashscreenController: UIViewController {
     }
     
     deinit {
-        print("Splashscreen deinit called")
+        print("SplashscreenController deinit called")
     }
 
 }

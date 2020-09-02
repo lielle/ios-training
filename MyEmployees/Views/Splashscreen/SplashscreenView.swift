@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class SplashscreenView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!

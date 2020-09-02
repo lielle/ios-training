@@ -8,16 +8,23 @@
 
 import UIKit
 
+protocol LoginProtocol: AnyObject {
+    func onLogin()
+    func onSignup()
+}
+
 @IBDesignable
 class LoginView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordVisibilityButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    
+    weak var delegate: LoginProtocol?
     
     var isPasswordShown = false
     
@@ -60,6 +67,13 @@ extension LoginView {
         let imageName = isPasswordShown ? "eye" : "eye.slash"
         passwordVisibilityButton.setImage(UIImage(systemName: imageName), for: .normal)
         passwordField.isSecureTextEntry = !isPasswordShown
+    }
+    
+    @IBAction func onLogin(_ sender: Any) {
+        self.delegate?.onLogin()
+    }
+    @IBAction func onSignup(_ sender: Any) {
+        self.delegate?.onSignup()
     }
     
 }

@@ -124,16 +124,23 @@
             <objects>
                 <viewController id="ZbA-y0-l74" customClass="RegistrationController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AdV-Lc-rPB" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="67S-Vm-JAS"/>
                     </view>
                     <navigationItem key="navigationItem" id="7OH-S7-piX"/>
+                    <connections>
+                        <outlet property="companyView" destination="AdV-Lc-rPB" id="e75-6Y-P4Q"/>
+                        <segue destination="if9-8M-Aeb" kind="show" identifier="registerToLogin" id="s7j-6C-QVb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjg-Zm-mWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="929" y="835"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="s7j-6C-QVb"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView" customModule="MyEmployees" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="VXQ-3f-aDh" id="QKS-oY-E3h"/>
-                <outlet property="loginButton" destination="VO5-uL-XXv" id="ywa-Vg-ga3"/>
+                <outlet property="loginButton" destination="VO5-uL-XXv" id="QtU-sB-1q8"/>
                 <outlet property="passwordField" destination="DDr-UV-3Jf" id="9no-Ue-ejL"/>
                 <outlet property="passwordVisibilityButton" destination="d2N-cQ-Aog" id="2dP-2I-e4m"/>
                 <outlet property="signupButton" destination="GKo-dn-J7r" id="APW-UT-lYx"/>
@@ -28,6 +28,9 @@
                     <state key="normal" title="Sign up">
                         <color key="titleColor" red="0.31263640520000002" green="0.7585242391" blue="0.64277493949999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="onSignup:" destination="-1" eventType="touchUpInside" id="UvS-K5-Dro"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4Km-N4-abV">
                     <rect key="frame" x="50" y="373" width="314" height="160"/>
@@ -64,6 +67,9 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="titleShadowColor" red="0.18772712350000001" green="0.36754250529999999" blue="0.75810116530000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="onLogin:" destination="-1" eventType="touchUpInside" id="lgT-Rt-7m9"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

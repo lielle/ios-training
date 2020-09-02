@@ -9,10 +9,14 @@
 import UIKit
 
 class RegistrationController: UIViewController {
+    
+    @IBOutlet var companyView: CompanyView!
+    
     let logoKey = UUID().uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        companyView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,4 +27,13 @@ class RegistrationController: UIViewController {
         super.viewDidDisappear(animated)
         dismiss(animated: false, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        UIApplication.shared.windows.first?.rootViewController = segue.destination
+    }
+    
+    deinit {
+        print("RegistrationController deinit called")
+    }
+    
 }

@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol CompanyProtocol: AnyObject {
+    var viewController: UIViewController { get }
+    func isNameValid() -> Bool
+    func onRegister()
+    func onBackToLogin()
+}
+
 @IBDesignable
 class CompanyView: UIView {
 
-    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var logoImageButton: UIButton!
@@ -21,6 +28,8 @@ class CompanyView: UIView {
     @IBOutlet weak var passwordVisibilityButton: UIButton!
     @IBOutlet weak var contactField: UITextField!
     @IBOutlet weak var addressTextView: UITextView!
+    
+    weak var delegate: CompanyProtocol?
     
     var isPasswordShown = false
     var imagePicker = UIImagePickerController()
@@ -36,7 +45,7 @@ class CompanyView: UIView {
     }
     
     func xibSetup() {
-        contentView = loadViewFromNib(nibName: "SplashscreenView")
+        contentView = loadViewFromNib(nibName: "CompanyView")
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.frame = self.bounds
         addSubview(contentView)
@@ -64,10 +73,10 @@ extension CompanyView {
     }
     
     @IBAction func nameFinishedEditing(_ sender: Any) {
-//        guard isNameValid() else {
-//            nameField.backgroundColor = UIColor.red.withAlphaComponent(0.2)
-//            return
-//        }
+        guard let delegate = self.delegate, delegate.isNameValid() else {
+            nameField.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+            return
+        }
     }
     
 }
@@ -76,11 +85,11 @@ extension CompanyView {
 extension CompanyView {
     
     @IBAction func onPasswordVisibilityToggled(_ sender: Any) {
-//        isPasswordShown = !isPasswordShown
-//        
-//        let imageName = isPasswordShown ? "eye" : "eye.slash"
-//        passwordVisibilityButton.setImage(UIImage(systemName: imageName), for: .normal)
-//        passwordField.isSecureTextEntry = !isPasswordShown
+        isPasswordShown = !isPasswordShown
+        
+        let imageName = isPasswordShown ? "eye" : "eye.slash"
+        passwordVisibilityButton.setImage(UIImage(systemName: imageName), for: .normal)
+        passwordField.isSecureTextEntry = !isPasswordShown
     }
     
     @IBAction func onChooseLogo(_ sender: Any) {
@@ -90,24 +99,16 @@ extension CompanyView {
             imagePicker.allowsEditing = false
 
             imagePicker.modalPresentationStyle = .overCurrentContext
-//            present(imagePicker, animated: true, completion: nil)
+            self.delegate?.viewController.present(imagePicker, animated: true, completion: nil)
         }
     }
     
     @IBAction func onRegister(_ sender: Any) {
-//        guard let company = getValidCompany() else {
-//            return
-//        }
-//        DatabaseHelper.shared.insert(company: company)
-//        logoImageButton.currentImage?.saveAsJpg(company.logoKey!)
-//
-//        displayOkAlert(title: "Successfully registered", message: "Registration complete.")
+        self.delegate?.onRegister()
     }
     
     @IBAction func onBackToLogin(_ sender: Any) {
-//        let controller = LoginController()
-//        controller.modalPresentationStyle = .overCurrentContext
-//        self.present(controller, animated: true, completion: nil)
+        self.delegate?.onBackToLogin()
     }
     
 }
@@ -121,7 +122,6 @@ extension CompanyView: UIImagePickerControllerDelegate & UINavigationControllerD
         }
         
         logoImageButton.setImage(image, for: .normal)
-        
         imagePicker.dismiss(animated: true, completion: nil)
     }
     

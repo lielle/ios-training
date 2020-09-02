@@ -17,13 +17,11 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginView.loginButton.addTarget(self, action: #selector(onLogin(_:)), for: .touchUpInside)
-        loginView.signupButton.addTarget(self, action: #selector(onSignUp(_:)), for: .touchUpInside)
+        loginView.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeFromParent()
         dismiss(animated: false, completion: nil)
     }
     
@@ -32,23 +30,22 @@ class LoginController: UIViewController {
     }
     
     deinit {
-        print("Login deinit called")
+        print("LoginController deinit called")
     }
 
 }
 
 // MARK: - Button Events
-extension LoginController {
+extension LoginController: LoginProtocol {
     
-    @objc func onLogin(_ sender: Any) {
+    func onLogin() {
         if isLoginValid() {
             onValidLogin()
-            
             self.performSegue(withIdentifier: "loginToSplash", sender: nil)
         }
     }
     
-    @objc func onSignUp(_ sender: Any) {
+    func onSignup() {
         self.performSegue(withIdentifier: "loginToRegister", sender: nil)
     }
 
