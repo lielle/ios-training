@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension RegistrationController: CompanyProtocol {
+extension CompanyRegistrationController: CompanyProtocol {
     
     var viewController: UIViewController {
         return self
@@ -41,7 +41,7 @@ extension RegistrationController: CompanyProtocol {
 }
 
 // MARK: - Validations
-extension RegistrationController {
+extension CompanyRegistrationController {
     
     
     func isUsernameValid() -> Bool {

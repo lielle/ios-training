@@ -1,26 +1,24 @@
 //
-//  RegistrationController.swift
+//  EmployeeFilterController.swift
 //  MyEmployees
 //
-//  Created by Lielle Bawar on 8/21/20.
+//  Created by Lielle Bawar on 9/2/20.
 //  Copyright © 2020 escience. All rights reserved.
 //
 
 import UIKit
 
-class RegistrationController: UIViewController {
+class EmployeeFilterController: UIViewController {
     
-    @IBOutlet var companyView: CompanyView!
-    
-    let logoKey = UUID().uuidString
+    @IBOutlet var employeeFilterView: EmployeeFilterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyView.delegate = self
     }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -29,11 +27,11 @@ class RegistrationController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIApplication.shared.windows.first?.rootViewController = segue.destination
+//        UIApplication.shared.windows.first?.rootViewController = segue.destination
     }
     
     deinit {
-        print("RegistrationController deinit called")
+        print("EmployeeFilterController deinit called")
     }
-    
+
 }

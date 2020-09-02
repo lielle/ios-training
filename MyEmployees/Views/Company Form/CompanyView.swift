@@ -29,6 +29,11 @@ class CompanyView: UIView {
     @IBOutlet weak var contactField: UITextField!
     @IBOutlet weak var addressTextView: UITextView!
     
+    @IBOutlet weak var passwordStackView: UIStackView!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var backToLoginButton: UIButton!
+    
     weak var delegate: CompanyProtocol?
     
     var isPasswordShown = false

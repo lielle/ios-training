@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CompanyRegistrationController.swift
 //  MyEmployees
 //
 //  Created by Lielle Bawar on 8/21/20.
@@ -8,20 +8,19 @@
 
 import UIKit
 
-class WelcomeScreenController: UIViewController {
+class CompanyRegistrationController: UIViewController {
     
-    @IBOutlet weak var splashscreenView: SplashscreenView!
+    @IBOutlet var companyView: CompanyView!
+    
+    let logoKey = UUID().uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        companyView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        splashscreenView.logoImageView.image = UIImage(named: "ESC Logo")
-        splashscreenView.progressView.setAnimatedProgress(duration: 0) {
-            self.performSegue(withIdentifier: "welcomeToLogin", sender: nil)
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -34,7 +33,7 @@ class WelcomeScreenController: UIViewController {
     }
     
     deinit {
-        print("WelcomeScreenController deinit called")
+        print("CompanyRegistrationController deinit called")
     }
-
+    
 }

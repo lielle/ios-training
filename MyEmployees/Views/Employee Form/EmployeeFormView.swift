@@ -1,20 +1,17 @@
 //
-//  SplashscreenView.swift
+//  EmployeeFormView.swift
 //  MyEmployees
 //
-//  Created by Lielle Bawar on 9/1/20.
+//  Created by Lielle Bawar on 9/2/20.
 //  Copyright © 2020 escience. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
-class SplashscreenView: UIView {
+class EmployeeFormView: UIView {
 
     @IBOutlet weak var contentView: UIView!
-    
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var progressView: UIProgressView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,7 +24,7 @@ class SplashscreenView: UIView {
     }
     
     func xibSetup() {
-        contentView = loadViewFromNib(nibName: "SplashscreenView")
+        contentView = loadViewFromNib(nibName: "EmployeeFormView")
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.frame = self.bounds
         addSubview(contentView)

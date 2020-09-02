@@ -30,7 +30,7 @@
         <!--Login Controller-->
         <scene sceneID="dPz-I3-ieV">
             <objects>
-                <viewController id="if9-8M-Aeb" customClass="LoginController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="if9-8M-Aeb" customClass="LoginController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ffl-Y9-R8J" customClass="LoginView" customModule="MyEmployees" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,37 +68,97 @@
             </objects>
             <point key="canvasLocation" x="1686" y="101"/>
         </scene>
-        <!--Item 2-->
+        <!--Company Profile-->
         <scene sceneID="kbA-7J-bWi">
             <objects>
-                <viewController id="UjQ-hv-zAo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="62n-K2-1CN">
+                <viewController id="UjQ-hv-zAo" customClass="CompanyUpdateController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="62n-K2-1CN" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="qiz-H8-Vm9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="paF-uT-r70"/>
+                    <navigationItem key="navigationItem" title="Company Profile" id="oze-Q9-bVy">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XNR-oy-PkY">
+                            <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onLogout:" destination="UjQ-hv-zAo" id="pUN-q7-f9B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="companyView" destination="62n-K2-1CN" id="3K8-hV-eOn"/>
+                        <segue destination="if9-8M-Aeb" kind="show" identifier="companyToLogin" id="P0N-LP-8u4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fun-X3-J4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3481" y="427"/>
+            <point key="canvasLocation" x="4423.1999999999998" y="426.35467980295567"/>
         </scene>
-        <!--Item 1-->
+        <!--Employee Form Controller-->
+        <scene sceneID="nDH-Dr-kaC">
+            <objects>
+                <viewController id="tVl-Af-6br" customClass="EmployeeFormController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Blf-Yl-bqo" customClass="EmployeeFormView" customModule="MyEmployees" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7a8-ZE-3fM"/>
+                    </view>
+                    <connections>
+                        <outlet property="employeeFormView" destination="Blf-Yl-bqo" id="efg-PQ-aZ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Wd-a5-WFX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5439" y="76"/>
+        </scene>
+        <!--Employees-->
         <scene sceneID="DJ9-dg-lvG">
             <objects>
-                <viewController id="Hxu-vr-fi0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ff4-6G-7Ml">
+                <viewController id="Hxu-vr-fi0" customClass="EmployeeListController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ff4-6G-7Ml" customClass="EmployeeListView" customModule="MyEmployees" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5Px-z7-YzE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="YjO-3h-Rek"/>
+                    <navigationItem key="navigationItem" title="Employees" id="UGS-vf-pf8">
+                        <barButtonItem key="leftBarButtonItem" title="Add new" id="qH0-hi-1D2">
+                            <color key="tintColor" red="0.18772712350000001" green="0.36754250529999999" blue="0.75810116530000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onAddEmployee:" destination="Hxu-vr-fi0" id="HEl-lV-7Eh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Z6r-aY-IKU">
+                            <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="employeeListView" destination="Ff4-6G-7Ml" id="BxM-2R-qpd"/>
+                        <segue destination="zPx-tF-VpT" kind="presentation" identifier="employeeToFilter" modalPresentationStyle="overCurrentContext" id="7HT-dj-LaF"/>
+                        <segue destination="tVl-Af-6br" kind="presentation" identifier="employeeToForm" modalPresentationStyle="overCurrentContext" id="05k-6t-DZk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BX-jN-bzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3481" y="-226"/>
+            <point key="canvasLocation" x="4423.1999999999998" y="-226.10837438423647"/>
+        </scene>
+        <!--Employee Filter Controller-->
+        <scene sceneID="uIq-v5-8cC">
+            <objects>
+                <viewController id="zPx-tF-VpT" customClass="EmployeeFilterController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UUf-cp-kig" customClass="EmployeeFilterView" customModule="MyEmployees" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bjw-TE-ezx"/>
+                    </view>
+                    <connections>
+                        <outlet property="employeeFilterView" destination="UUf-cp-kig" id="SSo-UN-q7f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rB-8L-EIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5439" y="-602"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8aJ-li-VsA">
@@ -111,18 +171,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Hxu-vr-fi0" kind="relationship" relationship="viewControllers" id="rTk-qt-wFK"/>
-                        <segue destination="UjQ-hv-zAo" kind="relationship" relationship="viewControllers" id="79b-4Z-KGH"/>
+                        <segue destination="0hm-cc-1VT" kind="relationship" relationship="viewControllers" id="rTk-qt-wFK"/>
+                        <segue destination="rUb-gK-NxA" kind="relationship" relationship="viewControllers" id="79b-4Z-KGH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLg-Sx-khG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2529" y="100"/>
         </scene>
-        <!--Registration Controller-->
+        <!--Company Registration Controller-->
         <scene sceneID="Rbp-Ws-tae">
             <objects>
-                <viewController id="ZbA-y0-l74" customClass="RegistrationController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZbA-y0-l74" customClass="CompanyRegistrationController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AdV-Lc-rPB" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,8 +199,52 @@
             </objects>
             <point key="canvasLocation" x="929" y="835"/>
         </scene>
+        <!--My Employees-->
+        <scene sceneID="Gex-9S-j2c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0hm-cc-1VT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Employees" image="person.3" catalog="system" selectedImage="person.3.fill" id="YjO-3h-Rek"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FuK-eL-F6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hxu-vr-fi0" kind="relationship" relationship="rootViewController" id="bcO-hY-AgE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z3U-SN-HpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3480.8000000000002" y="-226.10837438423647"/>
+        </scene>
+        <!--My Company-->
+        <scene sceneID="Fpr-0L-2jH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUb-gK-NxA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Company" image="rectangle.3.offgrid" catalog="system" selectedImage="rectangle.3.offgrid.fill" id="paF-uT-r70"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ja-uS-dqZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UjQ-hv-zAo" kind="relationship" relationship="rootViewController" id="cxX-Vz-QEF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F1A-IH-8PP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3480.8000000000002" y="426.35467980295567"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s7j-6C-QVb"/>
+        <segue reference="P0N-LP-8u4"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="rectangle.3.offgrid" catalog="system" width="128" height="80"/>
+        <image name="rectangle.3.offgrid.fill" catalog="system" width="128" height="81"/>
+    </resources>
 </document>

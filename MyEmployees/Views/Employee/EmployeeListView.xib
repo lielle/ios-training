@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmployeeListView" customModule="MyEmployees" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="LZ4-fX-I7x" id="vNK-Kp-U85"/>
+                <outlet property="searchField" destination="MFa-vN-9vj" id="Jga-Co-A2f"/>
+                <outlet property="tableView" destination="LmX-ag-UpQ" id="GCP-FX-QcM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LZ4-fX-I7x">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGP-vR-9rN">
+                    <rect key="frame" x="10" y="10" width="355" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeR-Kz-O3v">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="6D7-xJ-xXa"/>
+                                <constraint firstAttribute="width" constant="40" id="YxD-uU-mpc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onFilter:" destination="-1" eventType="touchUpInside" id="2jh-9a-HNK"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFa-vN-9vj">
+                            <rect key="frame" x="40" y="0.0" width="315" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="gEH-FE-Gyt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="onSearch:" destination="-1" eventType="primaryActionTriggered" id="Qpc-Bz-5NZ"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LmX-ag-UpQ">
+                    <rect key="frame" x="0.0" y="55" width="375" height="612"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="LmX-ag-UpQ" firstAttribute="top" secondItem="YGP-vR-9rN" secondAttribute="bottom" constant="5" id="bG8-wo-56D"/>
+                <constraint firstItem="Ye6-ce-890" firstAttribute="bottom" secondItem="LmX-ag-UpQ" secondAttribute="bottom" id="f82-ZR-cQG"/>
+                <constraint firstItem="YGP-vR-9rN" firstAttribute="top" secondItem="Ye6-ce-890" secondAttribute="top" constant="10" id="gaO-Th-mA6"/>
+                <constraint firstItem="LmX-ag-UpQ" firstAttribute="trailing" secondItem="Ye6-ce-890" secondAttribute="trailing" id="gcd-hP-7cf"/>
+                <constraint firstItem="YGP-vR-9rN" firstAttribute="leading" secondItem="Ye6-ce-890" secondAttribute="leading" constant="10" id="sVW-g5-sMA"/>
+                <constraint firstItem="Ye6-ce-890" firstAttribute="trailing" secondItem="YGP-vR-9rN" secondAttribute="trailing" constant="10" id="uMm-UQ-gey"/>
+                <constraint firstItem="LmX-ag-UpQ" firstAttribute="leading" secondItem="Ye6-ce-890" secondAttribute="leading" id="vUD-Co-Cyv"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Ye6-ce-890"/>
+            <point key="canvasLocation" x="123" y="-546"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
+    </resources>
+</document>

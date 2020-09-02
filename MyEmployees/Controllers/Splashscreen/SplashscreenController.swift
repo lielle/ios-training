@@ -24,7 +24,7 @@ class SplashscreenController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        splashscreenView.progressView.setAnimatedProgress(duration: 5) {
+        splashscreenView.progressView.setAnimatedProgress(duration: 0) {
             self.performSegue(withIdentifier: "splashToMain", sender: nil)
         }
     }

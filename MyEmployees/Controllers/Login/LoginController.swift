@@ -39,6 +39,7 @@ class LoginController: UIViewController {
 extension LoginController: LoginProtocol {
     
     func onLogin() {
+        self.performSegue(withIdentifier: "loginToSplash", sender: nil) // remove
         if isLoginValid() {
             onValidLogin()
             self.performSegue(withIdentifier: "loginToSplash", sender: nil)
