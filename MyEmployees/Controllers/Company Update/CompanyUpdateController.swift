@@ -12,16 +12,16 @@ class CompanyUpdateController: UIViewController {
     
     @IBOutlet weak var companyView: CompanyView!
     
-    let userPreferences = UserDefaults.standard
     weak var company: Company!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let loggedCompany = userPreferences.value(Company.self, forKey: "company") else {
+        guard let loggedCompany = CompanyDao.getLoggedIn() else {
             return
         }
         company = loggedCompany
+        companyView.delegate = self
         
         initView()
         initCompanyFields()
@@ -64,6 +64,27 @@ class CompanyUpdateController: UIViewController {
 
     @IBAction func onLogout(_ sender: Any) {
         self.performSegue(withIdentifier: "companyToLogin", sender: nil)
+    }
+    
+}
+
+// MARK: - CompanyViewDelegate
+extension CompanyUpdateController: CompanyViewDelegate {
+    
+    var viewController: UIViewController {
+        self
+    }
+    
+    func isNameValid() -> Bool {
+        return true
+    }
+    
+    func onRegister() {
+        
+    }
+    
+    func onBackToLogin() {
+        
     }
     
 }

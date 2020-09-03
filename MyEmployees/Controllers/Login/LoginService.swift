@@ -11,11 +11,11 @@ import Foundation
 extension LoginController {
     
     func onValidLogin() {
-        guard let company = DatabaseHelper.shared.fetchCompanyBy(username: loginView.usernameField.text!) else {
+        guard let company = CompanyDao.fetchCompanyBy(username: loginView.usernameField.text!) else {
             displayOkAlert(title: "Login", message: "Company not found.")
             return
         }
-        userPreferences.set(encodable: company, forKey: "company")
+        CompanyDao.setLoggedIn(company: company)
     }
     
 }
@@ -24,7 +24,7 @@ extension LoginController {
 extension LoginController {
     
     func isUsernameExisting() -> Bool {
-        guard let _ = DatabaseHelper.shared.fetchCompanyPasswordBy(username: loginView.usernameField.text!) else {
+        guard let _ = CompanyDao.fetchCompanyPasswordBy(username: loginView.usernameField.text!) else {
             displayOkAlert(title: "Login", message: "Username does not exist.")
             return false
         }
@@ -32,7 +32,7 @@ extension LoginController {
     }
     
     func areCredentialsValid() -> Bool {
-        guard let password = DatabaseHelper.shared.fetchCompanyPasswordBy(username: loginView.usernameField.text!), password == hashedPassword else {
+        guard let password = CompanyDao.fetchCompanyPasswordBy(username: loginView.usernameField.text!), password == hashedPassword else {
             displayOkAlert(title: "Login", message: "Username and password do not match.")
             return false
         }

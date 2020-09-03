@@ -15,11 +15,9 @@ class SplashscreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userPreferences = UserDefaults.standard
-        guard let company = userPreferences.value(Company.self, forKey: "company") else {
+        guard let company = CompanyDao.getLoggedIn() else {
             return
         }
-        
         splashscreenView.logoImageView.image = getImage(name: company.logoKey!)
     }
     

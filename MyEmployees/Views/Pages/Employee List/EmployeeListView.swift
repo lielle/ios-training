@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol EmployeeListProtocol: AnyObject {
+protocol EmployeeListViewDelegate: AnyObject {
     func onFilter()
     func onSearch()
 }
@@ -21,7 +21,7 @@ class EmployeeListView: UIView {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    weak var delegate: EmployeeListProtocol?
+    weak var delegate: EmployeeListViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

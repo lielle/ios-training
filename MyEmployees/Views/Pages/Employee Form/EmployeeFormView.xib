@@ -24,8 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employee Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpj-0E-aZa">
+                    <rect key="frame" x="0.0" y="69" width="414" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sm-YW-nqZ">
-                    <rect key="frame" x="20" y="64" width="374" height="702"/>
+                    <rect key="frame" x="20" y="99.5" width="374" height="666.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-ik-m6j">
                             <rect key="frame" x="20" y="30" width="334" height="585"/>
@@ -144,18 +150,51 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B9w-oW-Caj">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mm6-7l-5Hg" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                             <rect key="frame" x="0.0" y="23" width="334" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="0BO-qt-jNL"/>
+                                                <constraint firstAttribute="height" constant="40" id="gWN-xY-pkv"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                        </textField>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                                    <real key="value" value="40"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                    <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="Select position"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="titleLeftInset">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="expandingDuration">
+                                                    <real key="value" value="0.20000000000000001"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="collapsingDuration">
+                                                    <real key="value" value="0.10000000000000001"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="itemTextColor">
+                                                    <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="heightConstraint" destination="gWN-xY-pkv" id="9Ab-Z3-joF"/>
+                                            </connections>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="B9w-oW-Caj" secondAttribute="trailing" id="7Ob-Bc-jRv"/>
-                                        <constraint firstItem="B9w-oW-Caj" firstAttribute="leading" secondItem="T76-hy-1x3" secondAttribute="leading" id="YAb-gN-VXi"/>
+                                        <constraint firstItem="mm6-7l-5Hg" firstAttribute="leading" secondItem="T76-hy-1x3" secondAttribute="leading" id="eHq-gm-Wad"/>
+                                        <constraint firstAttribute="trailing" secondItem="mm6-7l-5Hg" secondAttribute="trailing" id="xSv-1H-LrL"/>
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-ys-872">
@@ -208,52 +247,9 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mm6-7l-5Hg" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                            <rect key="frame" x="20" y="384" width="334" height="40"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="gWN-xY-pkv"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                                    <real key="value" value="40"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                    <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="Select position"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="titleLeftInset">
-                                    <integer key="value" value="0"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="0.5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="expandingDuration">
-                                    <real key="value" value="0.20000000000000001"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="collapsingDuration">
-                                    <real key="value" value="0.10000000000000001"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="itemTextColor">
-                                    <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <outlet property="heightConstraint" destination="gWN-xY-pkv" id="9Ab-Z3-joF"/>
-                            </connections>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="mm6-7l-5Hg" firstAttribute="trailing" secondItem="B9w-oW-Caj" secondAttribute="trailing" id="Dao-bK-NWy"/>
-                        <constraint firstItem="mm6-7l-5Hg" firstAttribute="leading" secondItem="B9w-oW-Caj" secondAttribute="leading" id="Dmv-9t-p9f"/>
-                        <constraint firstItem="mm6-7l-5Hg" firstAttribute="top" secondItem="B9w-oW-Caj" secondAttribute="top" id="PJi-ia-tsL"/>
                         <constraint firstItem="OSF-3o-GVc" firstAttribute="trailing" secondItem="dNc-ik-m6j" secondAttribute="trailing" constant="20" id="R5O-EG-poV"/>
                         <constraint firstItem="dNc-ik-m6j" firstAttribute="leading" secondItem="3sm-YW-nqZ" secondAttribute="leading" constant="20" id="eb5-vU-abW"/>
                         <constraint firstAttribute="trailing" secondItem="dNc-ik-m6j" secondAttribute="trailing" constant="20" id="fSf-Hn-pcP"/>
@@ -304,10 +300,13 @@
                 <constraint firstItem="cxs-hK-yWd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6cn-wb-e2K"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3sm-YW-nqZ" secondAttribute="trailing" constant="20" id="D6W-TY-4Kj"/>
                 <constraint firstItem="3sm-YW-nqZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PF5-Ji-MON"/>
-                <constraint firstItem="3sm-YW-nqZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="RpF-wn-RBD"/>
+                <constraint firstItem="Cpj-0E-aZa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="25" id="PZS-n8-PUs"/>
                 <constraint firstAttribute="trailing" secondItem="cxs-hK-yWd" secondAttribute="trailing" id="XjJ-H3-ezB"/>
+                <constraint firstItem="Cpj-0E-aZa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aeZ-nK-XKT"/>
                 <constraint firstItem="cxs-hK-yWd" firstAttribute="top" secondItem="3sm-YW-nqZ" secondAttribute="bottom" constant="20" id="aiH-9E-8bW"/>
                 <constraint firstItem="3sm-YW-nqZ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="b7x-Qt-dS4"/>
+                <constraint firstItem="3sm-YW-nqZ" firstAttribute="top" secondItem="Cpj-0E-aZa" secondAttribute="bottom" constant="10" id="jVk-4B-37j"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Cpj-0E-aZa" secondAttribute="trailing" id="lVb-oM-Zbp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>

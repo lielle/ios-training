@@ -9,8 +9,9 @@
 import SwiftyMenu
 import UIKit
 
-protocol EmployeeFormProtocol: AnyObject {
+protocol EmployeeFormViewDelegate: AnyObject {
     var viewController: UIViewController { get }
+    func onSave()
 }
 
 @IBDesignable
@@ -22,14 +23,16 @@ class EmployeeFormView: UIView {
     @IBOutlet weak var logoImageButton: UIButton!
     @IBOutlet weak var companyField: UITextField!
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet private weak var positionDropdown: SwiftyMenu!
+    @IBOutlet weak var positionDropdown: SwiftyMenu!
     @IBOutlet weak var contactField: UITextField!
     @IBOutlet weak var addressTextView: UITextView!
     
-    weak var delegate: EmployeeFormProtocol?
+    weak var delegate: EmployeeFormViewDelegate?
     
     var imagePicker = UIImagePickerController()
-    let positions: [SwiftyMenuDisplayable] = ["adfas", "sdfdsf"]
+    var selectedPosition: EmployeePosition?
+    var selectedPositionIndex: Int?
+    let positions: [SwiftyMenuDisplayable] = EmployeePosition.array(of: Employee.POSITIONS)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,7 +83,7 @@ extension EmployeeFormView {
     }
 
     @IBAction func onSave(_ sender: Any) {
-        delegate?.viewController.dismiss(animated: true, completion: nil)
+        delegate?.onSave()
     }
     
     @IBAction func onCancel(_ sender: Any) {
@@ -93,7 +96,8 @@ extension EmployeeFormView {
 extension EmployeeFormView: SwiftyMenuDelegate {
     
     func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        print("Selected option: \(item), at index: \(index)")
+        selectedPositionIndex = index
+        selectedPosition = item as? EmployeePosition
     }
     
 }

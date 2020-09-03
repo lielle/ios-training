@@ -11,7 +11,9 @@ import UIKit
 @IBDesignable
 class EmployeeCell: UITableViewCell {
 
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var positionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

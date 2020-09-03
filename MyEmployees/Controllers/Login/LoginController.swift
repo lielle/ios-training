@@ -13,7 +13,6 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginView: LoginView!
     
     var hashedPassword: String?
-    let userPreferences = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,7 @@ class LoginController: UIViewController {
 }
 
 // MARK: - Button Events
-extension LoginController: LoginProtocol {
+extension LoginController: LoginViewDelegate {
     
     func onLogin() {
         if isLoginValid() {

@@ -12,8 +12,6 @@ class CompanyRegistrationController: UIViewController {
     
     @IBOutlet var companyView: CompanyView!
     
-    let logoKey = UUID().uuidString
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         companyView.delegate = self

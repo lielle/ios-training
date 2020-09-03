@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LoginProtocol: AnyObject {
+protocol LoginViewDelegate: AnyObject {
     func onLogin()
     func onSignup()
 }
@@ -24,7 +24,7 @@ class LoginView: UIView {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
-    weak var delegate: LoginProtocol?
+    weak var delegate: LoginViewDelegate?
     
     var isPasswordShown = false
     

@@ -80,11 +80,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJC-vt-GkU">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <items>
                                             <navigationItem title="Company Profile" id="LHO-so-g7H">
                                                 <barButtonItem key="rightBarButtonItem" title="Logout" id="XNR-oy-PkY">
                                                     <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="onLogout:" destination="UjQ-hv-zAo" id="pUN-q7-f9B"/>
                                                     </connections>
@@ -93,7 +98,7 @@
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09A-yz-8SI" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="615"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="619"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                 </subviews>
@@ -126,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fun-X3-J4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3500" y="425.61576354679806"/>
+            <point key="canvasLocation" x="3500" y="182.51231527093597"/>
         </scene>
         <!--Employee Form Controller-->
         <scene sceneID="nDH-Dr-kaC">
@@ -162,12 +167,25 @@
                                             <navigationItem title="Employees" id="Fe4-JC-0cF">
                                                 <barButtonItem key="leftBarButtonItem" title="Add" id="LLB-Vg-h4Q">
                                                     <color key="tintColor" red="0.18772712350000001" green="0.36754250529999999" blue="0.75810116530000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="onAddEmployee:" destination="Hxu-vr-fi0" id="SbC-E4-zYo"/>
                                                     </connections>
                                                 </barButtonItem>
                                                 <barButtonItem key="rightBarButtonItem" title="Logout" id="dhb-4x-hHQ">
                                                     <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onLogout:" destination="Hxu-vr-fi0" id="nhW-v0-4hf"/>
+                                                    </connections>
                                                 </barButtonItem>
                                             </navigationItem>
                                         </items>
@@ -203,11 +221,12 @@
                         <outlet property="employeeListView" destination="VTL-QS-KUI" id="7be-m2-rfn"/>
                         <segue destination="zPx-tF-VpT" kind="presentation" identifier="employeeToFilter" modalPresentationStyle="overCurrentContext" id="7HT-dj-LaF"/>
                         <segue destination="tVl-Af-6br" kind="presentation" identifier="employeeToForm" id="05k-6t-DZk"/>
+                        <segue destination="if9-8M-Aeb" kind="show" identifier="employeeToLogin" id="rcA-3t-3so"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BX-jN-bzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3500" y="-226.10837438423647"/>
+            <point key="canvasLocation" x="3500" y="-639"/>
         </scene>
         <!--Employee Filter Controller-->
         <scene sceneID="uIq-v5-8cC">
@@ -230,15 +249,27 @@
         <scene sceneID="Rbp-Ws-tae">
             <objects>
                 <viewController id="ZbA-y0-l74" customClass="CompanyRegistrationController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AdV-Lc-rPB" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="AdV-Lc-rPB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7f-9s-i27" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="R7f-9s-i27" firstAttribute="leading" secondItem="67S-Vm-JAS" secondAttribute="leading" id="3TG-iO-bhH"/>
+                            <constraint firstItem="67S-Vm-JAS" firstAttribute="bottom" secondItem="R7f-9s-i27" secondAttribute="bottom" id="D7I-dT-e3v"/>
+                            <constraint firstItem="67S-Vm-JAS" firstAttribute="trailing" secondItem="R7f-9s-i27" secondAttribute="trailing" id="R8P-AB-xWC"/>
+                            <constraint firstItem="R7f-9s-i27" firstAttribute="top" secondItem="67S-Vm-JAS" secondAttribute="top" id="SeH-3K-9Qp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="67S-Vm-JAS"/>
                     </view>
                     <navigationItem key="navigationItem" id="7OH-S7-piX"/>
                     <connections>
-                        <outlet property="companyView" destination="AdV-Lc-rPB" id="e75-6Y-P4Q"/>
+                        <outlet property="companyView" destination="R7f-9s-i27" id="Sh5-gp-nmd"/>
                         <segue destination="if9-8M-Aeb" kind="show" identifier="registerToLogin" id="s7j-6C-QVb"/>
                     </connections>
                 </viewController>
@@ -268,7 +299,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P0N-LP-8u4"/>
+        <segue reference="rcA-3t-3so"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.3" catalog="system" width="128" height="62"/>

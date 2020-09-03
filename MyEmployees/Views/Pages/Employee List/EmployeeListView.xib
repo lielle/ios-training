@@ -43,7 +43,7 @@
                                 <constraint firstAttribute="height" constant="40" id="gEH-FE-Gyt"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             <connections>
                                 <action selector="onSearch:" destination="-1" eventType="primaryActionTriggered" id="Qpc-Bz-5NZ"/>
                             </connections>

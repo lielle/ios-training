@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CompanyRegistrationController: CompanyProtocol {
+extension CompanyRegistrationController: CompanyViewDelegate {
     
     var viewController: UIViewController {
         return self
@@ -88,7 +88,7 @@ extension CompanyRegistrationController {
             return nil
         }
         
-        let company = Company(name: name, username: username, password: password.sha256(salt: PASSWORD_SALT).hexString, contact: contact, address: address, logoKey: logoKey)
+        let company = Company(name: name, username: username, password: password.sha256(salt: PASSWORD_SALT).hexString, contact: contact, address: address, logoKey: UUID().uuidString)
         return company
     }
     

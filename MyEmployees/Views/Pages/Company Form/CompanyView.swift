@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CompanyProtocol: AnyObject {
+protocol CompanyViewDelegate: AnyObject {
     var viewController: UIViewController { get }
     func isNameValid() -> Bool
     func onRegister()
@@ -34,7 +34,7 @@ class CompanyView: UIView {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backToLoginButton: UIButton!
     
-    weak var delegate: CompanyProtocol?
+    weak var delegate: CompanyViewDelegate?
     
     var isPasswordShown = false
     var imagePicker = UIImagePickerController()

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		100D6A9869D469367F497A92 /* Pods_MyEmployeesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D11D3D6CDF70C66F7D885A /* Pods_MyEmployeesTests.framework */; };
 		8BB69556CF34C31DE894205D /* Pods_MyEmployees.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F11C8509120E234C8CEB0A6 /* Pods_MyEmployees.framework */; };
+		B028042B250126CB0011E5B2 /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028042A250126CB0011E5B2 /* UIBarButtonItemExtensions.swift */; };
+		B028042D250127FF0011E5B2 /* EmployeeDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B028042C250127FF0011E5B2 /* EmployeeDao.swift */; };
 		B0368B2B24F4DEDD00FBD07A /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0368B2A24F4DEDD00FBD07A /* FileHelper.swift */; };
 		B0454D2D24FE76AD00BCB557 /* SplashscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0454D2C24FE76AD00BCB557 /* SplashscreenView.swift */; };
 		B0454D2F24FE79E900BCB557 /* SplashscreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0454D2E24FE79E900BCB557 /* SplashscreenView.xib */; };
@@ -54,6 +56,7 @@
 		B0C574E324FFEF46003612E7 /* EmployeeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C574E224FFEF46003612E7 /* EmployeeFormView.swift */; };
 		B0C574E624FFEF68003612E7 /* EmployeeFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C574E524FFEF68003612E7 /* EmployeeFormView.xib */; };
 		B0C574E924FFEFED003612E7 /* EmployeeFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C574E824FFEFED003612E7 /* EmployeeFormController.swift */; };
+		B0C576522501101E0027B526 /* EmployeePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C576512501101E0027B526 /* EmployeePosition.swift */; };
 		EBE348361A9E57C970788FC2 /* Pods_MyEmployees_MyEmployeesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1818E642EF98D8BC4840183E /* Pods_MyEmployees_MyEmployeesUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +84,8 @@
 		60BC5534A3161889F4D3EBCE /* Pods-MyEmployees-MyEmployeesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEmployees-MyEmployeesUITests.debug.xcconfig"; path = "Target Support Files/Pods-MyEmployees-MyEmployeesUITests/Pods-MyEmployees-MyEmployeesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		718B4696E8B6C3D3B3B488E5 /* Pods-MyEmployees.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEmployees.debug.xcconfig"; path = "Target Support Files/Pods-MyEmployees/Pods-MyEmployees.debug.xcconfig"; sourceTree = "<group>"; };
 		825D9DAAB71193EC655C00B6 /* Pods-MyEmployeesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEmployeesTests.release.xcconfig"; path = "Target Support Files/Pods-MyEmployeesTests/Pods-MyEmployeesTests.release.xcconfig"; sourceTree = "<group>"; };
+		B028042A250126CB0011E5B2 /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensions.swift; sourceTree = "<group>"; };
+		B028042C250127FF0011E5B2 /* EmployeeDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDao.swift; sourceTree = "<group>"; };
 		B0368B2A24F4DEDD00FBD07A /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		B0454D2C24FE76AD00BCB557 /* SplashscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashscreenView.swift; sourceTree = "<group>"; };
 		B0454D2E24FE79E900BCB557 /* SplashscreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashscreenView.xib; sourceTree = "<group>"; };
@@ -132,6 +137,7 @@
 		B0C574E224FFEF46003612E7 /* EmployeeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeFormView.swift; sourceTree = "<group>"; };
 		B0C574E524FFEF68003612E7 /* EmployeeFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeFormView.xib; sourceTree = "<group>"; };
 		B0C574E824FFEFED003612E7 /* EmployeeFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeFormController.swift; sourceTree = "<group>"; };
+		B0C576512501101E0027B526 /* EmployeePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeePosition.swift; sourceTree = "<group>"; };
 		D50EFD71B2E47E298D3C7A35 /* Pods-MyEmployeesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEmployeesTests.debug.xcconfig"; path = "Target Support Files/Pods-MyEmployeesTests/Pods-MyEmployeesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D11D3D6CDF70C66F7D885A /* Pods_MyEmployeesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEmployeesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC81B5BEB11263996888ED78 /* Pods-MyEmployees-MyEmployeesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEmployees-MyEmployeesUITests.release.xcconfig"; path = "Target Support Files/Pods-MyEmployees-MyEmployeesUITests/Pods-MyEmployees-MyEmployeesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 			children = (
 				B095798824FB95D000DE63D3 /* Company.swift */,
 				B0978B6025009CE000FC0C53 /* Employee.swift */,
+				B0C576512501101E0027B526 /* EmployeePosition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -375,10 +382,10 @@
 			children = (
 				B0454D2B24FE768800BCB557 /* Splashscreen */,
 				B0454D3724FE8E5800BCB557 /* Login */,
+				B0454D3C24FEA49300BCB557 /* Company Form */,
 				B0C574CF24FFC6E7003612E7 /* Employee List */,
 				B0C574DA24FFE1BE003612E7 /* Employee Filter */,
 				B0C574E424FFEF4E003612E7 /* Employee Form */,
-				B0454D3C24FEA49300BCB557 /* Company Form */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -387,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				B0978B6325009E0F00FC0C53 /* CompanyDao.swift */,
+				B028042C250127FF0011E5B2 /* EmployeeDao.swift */,
 			);
 			path = "Data Access";
 			sourceTree = "<group>";
@@ -402,6 +410,7 @@
 				B0BB09FC24FF1E160083D676 /* DataExtensions.swift */,
 				B0BB09FE24FF1E300083D676 /* StringExtensions.swift */,
 				B0BB0A0024FF1E4C0083D676 /* UserDefaultsExtensions.swift */,
+				B028042A250126CB0011E5B2 /* UIBarButtonItemExtensions.swift */,
 			);
 			path = "Library Extensions";
 			sourceTree = "<group>";
@@ -737,12 +746,15 @@
 				B0BB09F924FF1DC20083D676 /* UITextFieldExtensions.swift in Sources */,
 				B08BBF4924EF79FD00835AF0 /* WelcomeScreenController.swift in Sources */,
 				B0454D2D24FE76AD00BCB557 /* SplashscreenView.swift in Sources */,
+				B028042B250126CB0011E5B2 /* UIBarButtonItemExtensions.swift in Sources */,
 				B095798D24FBA5E000DE63D3 /* CompanyRegistrationService.swift in Sources */,
 				B0C574D124FFC710003612E7 /* EmployeeListView.swift in Sources */,
 				B082B2E624F3E9C5005A1771 /* Strings.swift in Sources */,
 				B08BBF4524EF79FD00835AF0 /* AppDelegate.swift in Sources */,
 				B0454D3E24FEA4B100BCB557 /* CompanyView.swift in Sources */,
 				B0978B6125009CE000FC0C53 /* Employee.swift in Sources */,
+				B0C576522501101E0027B526 /* EmployeePosition.swift in Sources */,
+				B028042D250127FF0011E5B2 /* EmployeeDao.swift in Sources */,
 				B063789524F7B9B4001BE75A /* EmployeeListController.swift in Sources */,
 				B0C574D724FFCE79003612E7 /* EmployeeCell.swift in Sources */,
 				B08BBF7924EF7D9F00835AF0 /* SplashscreenController.swift in Sources */,

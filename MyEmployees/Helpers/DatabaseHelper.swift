@@ -15,7 +15,7 @@ class DatabaseHelper {
     
     init() {
         db = openDatabase()
-        createCompanyTable()
+        createTables()
     }
     
     let dbPath = "MyEmployees.sqlite"
@@ -40,21 +40,27 @@ class DatabaseHelper {
 // MARK: - CREATE TABLES
 extension DatabaseHelper {
     
-    func createCompanyTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS company(id INTEGER PRIMARY KEY, name TEXT, username TEXT, password TEXT, contact TEXT, address TEXT, logo TEXT);"
+    func createTable(query: String) {
+        let createTableString = query
         var createTableStatement: OpaquePointer? = nil
+        print(query)
         
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
             if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                print("Company table created.")
+                print("Table created.")
             } else {
-                print("Company table could not be created.")
+                print("Table could not be created.")
             }
         } else {
             print("CREATE TABLE statement could not be prepared.")
         }
         
         sqlite3_finalize(createTableStatement)
+    }
+    
+    func createTables() {
+        createTable(query: "CREATE TABLE IF NOT EXISTS company(id INTEGER PRIMARY KEY, name TEXT, username TEXT, password TEXT, contact TEXT, address TEXT, logo TEXT);")
+        createTable(query: "CREATE TABLE IF NOT EXISTS employee(id INTEGER PRIMARY KEY, companyId INTEGER, name TEXT, positionId INTEGER, contact TEXT, address TEXT, logo TEXT);")
     }
     
 }
@@ -68,6 +74,7 @@ extension DatabaseHelper {
         
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             
+            // add params
             for (index, param) in params.enumerated() {
                 if param is String {
                     sqlite3_bind_text(insertStatement, Int32(index+1), (param as! NSString).utf8String, -1, nil)
@@ -92,21 +99,36 @@ extension DatabaseHelper {
 // MARK: - FETCH QUERIES
 extension DatabaseHelper {
     
-    func fetchCompanyPasswordBy(username: String) -> String? {
-        let queryStatementString = "SELECT password FROM company WHERE username=?;"
+    func fetch(query: String, columnTypes: [Any.Type], params: [Any]) -> [[Any?]]? {
+        let queryStatementString = query
         var queryStatement: OpaquePointer? = nil
-        var password: String? = nil
+        var rows: [[Any?]] = []
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             
-            sqlite3_bind_text(queryStatement, 1, (username as NSString).utf8String, -1, nil)
+            // add params
+            for (index, param) in params.enumerated() {
+                if param is String {
+                    sqlite3_bind_text(queryStatement, Int32(index+1), (param as! NSString).utf8String, -1, nil)
+                } else if param is Int {
+                    sqlite3_bind_int(queryStatement, Int32(index+1), Int32(truncating: param as! NSNumber))
+                }
+            }
             
             while sqlite3_step(queryStatement) == SQLITE_ROW {
-                
-                password = String(cString: sqlite3_column_text(queryStatement, 0))
-                
-                print("Query Result:")
-                print("\(String(describing: password))")
+                var columns: [Any?] = []
+                for columnIndex in 0..<columnTypes.count {
+                    var column: Any? = nil
+                    
+                    if columnTypes[columnIndex] == String.self {
+                        column = String(cString: sqlite3_column_text(queryStatement, Int32(columnIndex)))
+                    } else if columnTypes[columnIndex] == Int.self {
+                        column = Int(sqlite3_column_int(queryStatement, Int32(columnIndex)))
+                    }
+                    
+                    columns.append(column)
+                }
+                rows.append(columns)
             }
             
         } else {
@@ -115,41 +137,9 @@ extension DatabaseHelper {
         
         sqlite3_finalize(queryStatement)
         
-        return password
-    }
-    
-    func fetchCompanyBy(username: String) -> Company? {
-        let queryStatementString = "SELECT id, name, username, password, contact, address, logo FROM company WHERE username=?;"
-        var queryStatement: OpaquePointer? = nil
-        var company: Company? = nil
-        
-        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-            
-            sqlite3_bind_text(queryStatement, 1, (username as NSString).utf8String, -1, nil)
-            
-            while sqlite3_step(queryStatement) == SQLITE_ROW {
-                
-                let id = Int(sqlite3_column_int(queryStatement, 0))
-                let name = String(cString: sqlite3_column_text(queryStatement, 1))
-                let username = String(cString: sqlite3_column_text(queryStatement, 2))
-                let password = String(cString: sqlite3_column_text(queryStatement, 3))
-                let contact = String(cString: sqlite3_column_text(queryStatement, 4))
-                let address = String(cString: sqlite3_column_text(queryStatement, 5))
-                let logo = String(cString: sqlite3_column_text(queryStatement, 6))
-                
-                print("Query Result:")
-                print("\(id)")
-                
-                company = Company(id: id, name: name, username: username, password: password, contact: contact, address: address, logoKey: logo)
-            }
-            
-        } else {
-            print("SELECT statement could not be prepared")
-        }
-        
-        sqlite3_finalize(queryStatement)
-        
-        return company
+        let response = rows.count>0 ? rows : nil
+        print(response ?? "Null response")
+        return response
     }
     
 }

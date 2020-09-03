@@ -6,12 +6,23 @@
 //  Copyright © 2020 escience. All rights reserved.
 //
 
+import SwiftyMenu
 import UIKit
+
+protocol EmployeeFilterViewDelegate: AnyObject {
+    var viewController: UIViewController { get }
+    func onFilter()
+}
 
 @IBDesignable
 class EmployeeFilterView: UIView {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var positionDropdown: SwiftyMenu!
+    
+    weak var delegate: EmployeeFilterViewDelegate?
+    
+    let positions: [SwiftyMenuDisplayable] = EmployeePosition.array(of: Employee.POSITIONS)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +39,9 @@ class EmployeeFilterView: UIView {
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.frame = self.bounds
         addSubview(contentView)
+        
+        positionDropdown.delegate = self
+        positionDropdown.items = positions
     }
 
     func loadViewFromNib(nibName: String) -> UIView? {
@@ -38,4 +52,22 @@ class EmployeeFilterView: UIView {
         return view
     }
 
+    @IBAction func onFilter(_ sender: Any) {
+        delegate?.onFilter()
+        delegate?.viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onCancel(_ sender: Any) {
+        delegate?.viewController.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - SwiftyMenuDelegate
+extension EmployeeFilterView: SwiftyMenuDelegate {
+    
+    func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
+        print("Selected option: \(item), at index: \(index)")
+    }
+    
 }
