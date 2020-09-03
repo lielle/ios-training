@@ -14,11 +14,12 @@ class EmployeeFormController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        employeeFormView.delegate = self
     }
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -34,4 +35,13 @@ class EmployeeFormController: UIViewController {
         print("EmployeeFormController deinit called")
     }
 
+}
+
+// MARK: - EmployeeFormProtocol
+extension EmployeeFormController: EmployeeFormProtocol {
+    
+    var viewController: UIViewController {
+        return self
+    }
+    
 }

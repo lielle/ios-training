@@ -37,12 +37,7 @@ class CompanyUpdateController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let presentedViewController = UIApplication.shared.windows.first?.rootViewController?.presentedViewController
-//
-//        presentedViewController?.present(segue.destination, animated: true) {
-//            UIApplication.shared.windows.first?.rootViewController = segue.destination
-//        }
-//        UIApplication.shared.windows.first?.rootViewController = segue.destination
+        UIApplication.shared.windows.first?.rootViewController = segue.destination
     }
     
     deinit {
@@ -50,6 +45,7 @@ class CompanyUpdateController: UIViewController {
     }
     
     func initView() {
+        companyView.nameField.borderStyle = .none
         companyView.nameField.isUserInteractionEnabled = false
         companyView.passwordStackView.isHidden = true
         companyView.passwordVisibilityButton.isHidden = true

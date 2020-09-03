@@ -28,10 +28,12 @@ extension CompanyRegistrationController: CompanyProtocol {
         guard let company = getValidCompany() else {
             return
         }
-        DatabaseHelper.shared.insert(company: company)
+        CompanyDao.insert(company: company)
         companyView.logoImageButton.currentImage?.saveAsJpg(company.logoKey!)
 
-        displayOkAlert(title: "Successfully registered", message: "Registration complete.")
+        displayOkAlert(title: "Successfully registered", message: "Registration complete.") {
+            self.performSegue(withIdentifier: "registerToLogin", sender: nil)
+        }
     }
     
     func onBackToLogin() {

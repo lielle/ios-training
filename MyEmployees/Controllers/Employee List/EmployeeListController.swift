@@ -82,8 +82,8 @@ extension EmployeeListController: UITableViewDataSource {
     
 }
 
-// MARK: - EmployeeProtocol
-extension EmployeeListController: EmployeeProtocol {
+// MARK: - EmployeeListProtocol
+extension EmployeeListController: EmployeeListProtocol {
     
     func onFilter() {
         self.performSegue(withIdentifier: "employeeToFilter", sender: nil)

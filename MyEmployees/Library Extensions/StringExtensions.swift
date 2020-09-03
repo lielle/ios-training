@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyMenu
 
 extension String {
 
@@ -14,4 +15,16 @@ extension String {
         return (self + salt).data(using: .utf8)!.sha256
     }
 
+}
+
+extension String: SwiftyMenuDisplayable {
+    
+    public var displayableValue: String {
+        self
+    }
+    
+    public var retrievableValue: Any {
+        self
+    }
+    
 }

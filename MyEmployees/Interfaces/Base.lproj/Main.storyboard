@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" id="Cbc-TR-I2w"/>
                     <connections>
                         <outlet property="splashscreenView" destination="p4h-2e-8td" id="Cgb-aK-7Vb"/>
-                        <segue destination="XtU-Uq-0aL" kind="show" identifier="splashToMain" id="7zB-OH-fsl"/>
+                        <segue destination="CHd-gi-rHv" kind="show" identifier="splashToMain" id="XTj-uK-gNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbN-EN-mfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,28 +72,61 @@
         <scene sceneID="kbA-7J-bWi">
             <objects>
                 <viewController id="UjQ-hv-zAo" customClass="CompanyUpdateController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="62n-K2-1CN" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="62n-K2-1CN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7KS-6v-z1c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJC-vt-GkU">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <items>
+                                            <navigationItem title="Company Profile" id="LHO-so-g7H">
+                                                <barButtonItem key="rightBarButtonItem" title="Logout" id="XNR-oy-PkY">
+                                                    <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="onLogout:" destination="UjQ-hv-zAo" id="pUN-q7-f9B"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09A-yz-8SI" customClass="CompanyView" customModule="MyEmployees" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="615"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="09A-yz-8SI" firstAttribute="leading" secondItem="7KS-6v-z1c" secondAttribute="leading" id="5Ia-Of-Bdn"/>
+                                    <constraint firstAttribute="bottom" secondItem="09A-yz-8SI" secondAttribute="bottom" id="9IB-IP-CQ0"/>
+                                    <constraint firstItem="xJC-vt-GkU" firstAttribute="leading" secondItem="7KS-6v-z1c" secondAttribute="leading" id="Aki-PY-wml"/>
+                                    <constraint firstItem="09A-yz-8SI" firstAttribute="top" secondItem="xJC-vt-GkU" secondAttribute="bottom" id="Dbi-KL-7aG"/>
+                                    <constraint firstAttribute="trailing" secondItem="xJC-vt-GkU" secondAttribute="trailing" id="Fkf-TH-ote"/>
+                                    <constraint firstItem="xJC-vt-GkU" firstAttribute="top" secondItem="7KS-6v-z1c" secondAttribute="top" id="hup-8q-nvt"/>
+                                    <constraint firstAttribute="trailing" secondItem="09A-yz-8SI" secondAttribute="trailing" id="p7e-4u-uQC"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7KS-6v-z1c" secondAttribute="trailing" id="4BP-Xd-nkL"/>
+                            <constraint firstItem="qiz-H8-Vm9" firstAttribute="bottom" secondItem="7KS-6v-z1c" secondAttribute="bottom" id="7no-as-j1A"/>
+                            <constraint firstItem="7KS-6v-z1c" firstAttribute="top" secondItem="qiz-H8-Vm9" secondAttribute="top" id="YJv-3C-moE"/>
+                            <constraint firstItem="7KS-6v-z1c" firstAttribute="leading" secondItem="qiz-H8-Vm9" secondAttribute="leading" id="obK-fb-nAp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qiz-H8-Vm9"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Company Profile" id="oze-Q9-bVy">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XNR-oy-PkY">
-                            <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="onLogout:" destination="UjQ-hv-zAo" id="pUN-q7-f9B"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="My Company" image="rectangle.3.offgrid" catalog="system" selectedImage="rectangle.3.offgrid.fill" id="jz4-Py-ewA"/>
+                    <navigationItem key="navigationItem" title="Company Profile" id="oze-Q9-bVy"/>
                     <connections>
-                        <outlet property="companyView" destination="62n-K2-1CN" id="3K8-hV-eOn"/>
+                        <outlet property="companyView" destination="09A-yz-8SI" id="3tk-R8-bmC"/>
                         <segue destination="if9-8M-Aeb" kind="show" identifier="companyToLogin" id="P0N-LP-8u4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fun-X3-J4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4423.1999999999998" y="426.35467980295567"/>
+            <point key="canvasLocation" x="3500" y="425.61576354679806"/>
         </scene>
         <!--Employee Form Controller-->
         <scene sceneID="nDH-Dr-kaC">
@@ -110,38 +143,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Wd-a5-WFX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5439" y="76"/>
+            <point key="canvasLocation" x="4514" y="75"/>
         </scene>
         <!--Employees-->
         <scene sceneID="DJ9-dg-lvG">
             <objects>
                 <viewController id="Hxu-vr-fi0" customClass="EmployeeListController" customModule="MyEmployees" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ff4-6G-7Ml" customClass="EmployeeListView" customModule="MyEmployees" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Ff4-6G-7Ml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D4k-q9-wFo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZ8-yZ-fEl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <items>
+                                            <navigationItem title="Employees" id="Fe4-JC-0cF">
+                                                <barButtonItem key="leftBarButtonItem" title="Add" id="LLB-Vg-h4Q">
+                                                    <color key="tintColor" red="0.18772712350000001" green="0.36754250529999999" blue="0.75810116530000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="onAddEmployee:" destination="Hxu-vr-fi0" id="SbC-E4-zYo"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Logout" id="dhb-4x-hHQ">
+                                                    <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTL-QS-KUI" customClass="EmployeeListView" customModule="MyEmployees" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="615"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="VTL-QS-KUI" secondAttribute="bottom" id="NGZ-wQ-hN2"/>
+                                    <constraint firstItem="LZ8-yZ-fEl" firstAttribute="leading" secondItem="D4k-q9-wFo" secondAttribute="leading" id="U87-9g-xTc"/>
+                                    <constraint firstItem="VTL-QS-KUI" firstAttribute="leading" secondItem="D4k-q9-wFo" secondAttribute="leading" id="WDb-ZQ-Mae"/>
+                                    <constraint firstAttribute="trailing" secondItem="VTL-QS-KUI" secondAttribute="trailing" id="aoH-tD-d9T"/>
+                                    <constraint firstItem="LZ8-yZ-fEl" firstAttribute="top" secondItem="D4k-q9-wFo" secondAttribute="top" id="j0a-by-Qzu"/>
+                                    <constraint firstAttribute="trailing" secondItem="LZ8-yZ-fEl" secondAttribute="trailing" id="nV5-Fr-r2K"/>
+                                    <constraint firstItem="VTL-QS-KUI" firstAttribute="top" secondItem="LZ8-yZ-fEl" secondAttribute="bottom" id="pmB-bK-jQT"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5Px-z7-YzE" firstAttribute="trailing" secondItem="D4k-q9-wFo" secondAttribute="trailing" id="R4c-6o-tfF"/>
+                            <constraint firstItem="D4k-q9-wFo" firstAttribute="leading" secondItem="Ff4-6G-7Ml" secondAttribute="leading" id="Twl-XM-HmJ"/>
+                            <constraint firstItem="5Px-z7-YzE" firstAttribute="bottom" secondItem="D4k-q9-wFo" secondAttribute="bottom" id="YsC-tg-NOo"/>
+                            <constraint firstItem="D4k-q9-wFo" firstAttribute="top" secondItem="5Px-z7-YzE" secondAttribute="top" id="grP-hk-O3F"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Px-z7-YzE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Employees" id="UGS-vf-pf8">
-                        <barButtonItem key="leftBarButtonItem" title="Add new" id="qH0-hi-1D2">
-                            <color key="tintColor" red="0.18772712350000001" green="0.36754250529999999" blue="0.75810116530000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="onAddEmployee:" destination="Hxu-vr-fi0" id="HEl-lV-7Eh"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Z6r-aY-IKU">
-                            <color key="tintColor" red="0.86274194719999997" green="0.12557333709999999" blue="0.29425773020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="My Employees" image="person.3" catalog="system" selectedImage="person.3.fill" id="gOT-Gq-uDm"/>
+                    <navigationItem key="navigationItem" title="Employees" id="RbJ-N0-I0V"/>
                     <connections>
-                        <outlet property="employeeListView" destination="Ff4-6G-7Ml" id="BxM-2R-qpd"/>
+                        <outlet property="employeeListView" destination="VTL-QS-KUI" id="7be-m2-rfn"/>
                         <segue destination="zPx-tF-VpT" kind="presentation" identifier="employeeToFilter" modalPresentationStyle="overCurrentContext" id="7HT-dj-LaF"/>
-                        <segue destination="tVl-Af-6br" kind="presentation" identifier="employeeToForm" modalPresentationStyle="overCurrentContext" id="05k-6t-DZk"/>
+                        <segue destination="tVl-Af-6br" kind="presentation" identifier="employeeToForm" id="05k-6t-DZk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BX-jN-bzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4423.1999999999998" y="-226.10837438423647"/>
+            <point key="canvasLocation" x="3500" y="-226.10837438423647"/>
         </scene>
         <!--Employee Filter Controller-->
         <scene sceneID="uIq-v5-8cC">
@@ -158,26 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rB-8L-EIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5439" y="-602"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="8aJ-li-VsA">
-            <objects>
-                <tabBarController id="XtU-Uq-0aL" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="fCi-NL-fsR"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qUX-C7-nVl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="0hm-cc-1VT" kind="relationship" relationship="viewControllers" id="rTk-qt-wFK"/>
-                        <segue destination="rUb-gK-NxA" kind="relationship" relationship="viewControllers" id="79b-4Z-KGH"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FLg-Sx-khG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2529" y="100"/>
+            <point key="canvasLocation" x="4514" y="-602"/>
         </scene>
         <!--Company Registration Controller-->
         <scene sceneID="Rbp-Ws-tae">
@@ -199,43 +246,25 @@
             </objects>
             <point key="canvasLocation" x="929" y="835"/>
         </scene>
-        <!--My Employees-->
-        <scene sceneID="Gex-9S-j2c">
+        <!--Tab Bar Controller-->
+        <scene sceneID="hl5-0y-v5Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0hm-cc-1VT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Employees" image="person.3" catalog="system" selectedImage="person.3.fill" id="YjO-3h-Rek"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CHd-gi-rHv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FuK-eL-F6Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <navigationItem key="navigationItem" id="7GZ-bm-hZp"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EPZ-Bv-0Vb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="Hxu-vr-fi0" kind="relationship" relationship="rootViewController" id="bcO-hY-AgE"/>
+                        <segue destination="Hxu-vr-fi0" kind="relationship" relationship="viewControllers" id="W3U-5u-1VO"/>
+                        <segue destination="UjQ-hv-zAo" kind="relationship" relationship="viewControllers" id="yfa-Xn-8nv"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z3U-SN-HpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C1s-aR-WzW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3480.8000000000002" y="-226.10837438423647"/>
-        </scene>
-        <!--My Company-->
-        <scene sceneID="Fpr-0L-2jH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUb-gK-NxA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Company" image="rectangle.3.offgrid" catalog="system" selectedImage="rectangle.3.offgrid.fill" id="paF-uT-r70"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ja-uS-dqZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UjQ-hv-zAo" kind="relationship" relationship="rootViewController" id="cxX-Vz-QEF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F1A-IH-8PP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3480.8000000000002" y="426.35467980295567"/>
+            <point key="canvasLocation" x="2537" y="101"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

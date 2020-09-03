@@ -62,23 +62,24 @@ extension DatabaseHelper {
 // MARK: - INSERT QUERIES
 extension DatabaseHelper {
     
-    func insert(company: Company) {
-        let insertStatementString = "INSERT INTO company(name, username, password, contact, address, logo) VALUES (?, ?, ?, ?, ?, ?);"
+    func insert(query: String, params: [Any]) {
+        let insertStatementString = query
         var insertStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             
-            sqlite3_bind_text(insertStatement, 1, (company.name! as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, (company.username! as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 3, (company.password! as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 4, (company.contact! as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 5, (company.address! as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 6, (company.logoKey! as NSString).utf8String, -1, nil)
+            for (index, param) in params.enumerated() {
+                if param is String {
+                    sqlite3_bind_text(insertStatement, Int32(index+1), (param as! NSString).utf8String, -1, nil)
+                } else if param is Int {
+                    sqlite3_bind_int(insertStatement, Int32(index+1), Int32(truncating: param as! NSNumber))
+                }
+            }
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
-                print("Successfully inserted company.")
+                print("Executed: \(query)")
             } else {
-                print("Could not insert company.")
+                print("Could not insert \(query)")
             }
         } else {
             print("INSERT statement could not be prepared.")
