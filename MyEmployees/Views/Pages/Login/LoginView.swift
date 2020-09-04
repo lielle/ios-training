@@ -43,7 +43,12 @@ class LoginView: UIView {
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.frame = self.bounds
         addSubview(contentView)
-        
+        setupViews()
+    }
+    
+    func setupViews() {
+        usernameField.delegate = self
+        passwordField.delegate = self
         usernameField.setRightPaddingPoints(30)
         passwordField.setRightPaddingPoints(30)
     }
@@ -74,6 +79,24 @@ extension LoginView {
     }
     @IBAction func onSignup(_ sender: Any) {
         self.delegate?.onSignup()
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: [])
+            if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
+                return false
+            }
+        }
+        catch {
+            print("ERROR")
+        }
+        return true
     }
     
 }

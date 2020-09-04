@@ -35,3 +35,26 @@ class CompanyRegistrationController: UIViewController {
     }
     
 }
+
+extension CompanyRegistrationController: CompanyViewDelegate {
+    
+    var viewController: UIViewController {
+        return self
+    }
+    
+    func onRegister() {
+        guard validateCompany() else {
+            return
+        }
+        
+        addCompany()
+        displayOkAlert(title: Label.REGISTRATION_SUCCESS, message: Label.REGISTRATION_SUCCESS_MESSAGE) {
+            self.performSegue(withIdentifier: "registerToLogin", sender: nil)
+        }
+    }
+    
+    func onBackToLogin() {
+        self.performSegue(withIdentifier: "registerToLogin", sender: nil)
+    }
+    
+}

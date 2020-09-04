@@ -12,7 +12,7 @@ extension LoginController {
     
     func onValidLogin() {
         guard let company = CompanyDao.fetchCompanyBy(username: loginView.usernameField.text!) else {
-            displayOkAlert(title: "Login", message: "Company not found.")
+            displayOkAlert(title: "Login error", message: "Company not found.")
             return
         }
         company.dao.setAsLoggedIn()
@@ -25,7 +25,7 @@ extension LoginController {
     
     func isUsernameExisting() -> Bool {
         guard let _ = CompanyDao.fetchCompanyPasswordBy(username: loginView.usernameField.text!) else {
-            displayOkAlert(title: "Login", message: "Username does not exist.")
+            displayOkAlert(title: "Login error", message: "Username does not exist.")
             return false
         }
         return true
@@ -33,7 +33,7 @@ extension LoginController {
     
     func areCredentialsValid() -> Bool {
         guard let password = CompanyDao.fetchCompanyPasswordBy(username: loginView.usernameField.text!), password == hashedPassword else {
-            displayOkAlert(title: "Login", message: "Username and password do not match.")
+            displayOkAlert(title: "Login error", message: "Username and password do not match.")
             return false
         }
         return true

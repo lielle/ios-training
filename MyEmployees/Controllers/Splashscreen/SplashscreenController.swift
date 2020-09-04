@@ -29,7 +29,6 @@ class SplashscreenController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeFromParent()
         dismiss(animated: false, completion: nil)
     }
     

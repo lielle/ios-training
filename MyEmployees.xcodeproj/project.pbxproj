@@ -20,7 +20,9 @@
 		B0454D4024FEA4BC00BCB557 /* CompanyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0454D3F24FEA4BC00BCB557 /* CompanyView.xib */; };
 		B05962B42501E5D70083EEDC /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05962B32501E5D70083EEDC /* EmptyTableView.xib */; };
 		B05C43522501E63D006E83CF /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05C43512501E63D006E83CF /* EmptyTableView.swift */; };
+		B05C435525020CC5006E83CF /* RestrictedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05C435325020877006E83CF /* RestrictedTextField.swift */; };
 		B063789524F7B9B4001BE75A /* EmployeeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063789324F7B9B4001BE75A /* EmployeeListController.swift */; };
+		B080A3B025021D08007BAAD9 /* CompanyUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080A3AF25021D08007BAAD9 /* CompanyUpdateService.swift */; };
 		B082B2E624F3E9C5005A1771 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082B2E524F3E9C5005A1771 /* Strings.swift */; };
 		B08BBF4524EF79FD00835AF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF4424EF79FD00835AF0 /* AppDelegate.swift */; };
 		B08BBF4724EF79FD00835AF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF4624EF79FD00835AF0 /* SceneDelegate.swift */; };
@@ -96,7 +98,9 @@
 		B0454D3F24FEA4BC00BCB557 /* CompanyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyView.xib; sourceTree = "<group>"; };
 		B05962B32501E5D70083EEDC /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
 		B05C43512501E63D006E83CF /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
+		B05C435325020877006E83CF /* RestrictedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedTextField.swift; sourceTree = "<group>"; };
 		B063789324F7B9B4001BE75A /* EmployeeListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListController.swift; sourceTree = "<group>"; };
+		B080A3AF25021D08007BAAD9 /* CompanyUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyUpdateService.swift; sourceTree = "<group>"; };
 		B082B2E524F3E9C5005A1771 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		B08BBF4124EF79FD00835AF0 /* MyEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08BBF4424EF79FD00835AF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -429,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				B0C574CD24FF9169003612E7 /* CompanyUpdateController.swift */,
+				B080A3AF25021D08007BAAD9 /* CompanyUpdateService.swift */,
 			);
 			path = "Company Update";
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 		B0C574D924FFE1AF003612E7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B05C435325020877006E83CF /* RestrictedTextField.swift */,
 				B05C43502501E61A006E83CF /* Empty Table View */,
 				B0C574D424FFCE59003612E7 /* Employee Cell */,
 			);
@@ -778,12 +784,14 @@
 				B08BBF8924EFAEFA00835AF0 /* CompanyRegistrationController.swift in Sources */,
 				B08BBF8224EF804500835AF0 /* LoginController.swift in Sources */,
 				B0BB09F524FF1D770083D676 /* UIViewControllerExtensions.swift in Sources */,
+				B080A3B025021D08007BAAD9 /* CompanyUpdateService.swift in Sources */,
 				B0454D3B24FE8E9200BCB557 /* LoginView.swift in Sources */,
 				B0C574CE24FF9169003612E7 /* CompanyUpdateController.swift in Sources */,
 				B0BB09F324FF1D480083D676 /* UIProgressViewExtensions.swift in Sources */,
 				B0BB09FD24FF1E160083D676 /* DataExtensions.swift in Sources */,
 				B0BB09FF24FF1E300083D676 /* StringExtensions.swift in Sources */,
 				B0BB0A0124FF1E4C0083D676 /* UserDefaultsExtensions.swift in Sources */,
+				B05C435525020CC5006E83CF /* RestrictedTextField.swift in Sources */,
 				B0C574E124FFE77B003612E7 /* EmployeeFilterController.swift in Sources */,
 				B095798924FB95D000DE63D3 /* Company.swift in Sources */,
 				B0368B2B24F4DEDD00FBD07A /* FileHelper.swift in Sources */,

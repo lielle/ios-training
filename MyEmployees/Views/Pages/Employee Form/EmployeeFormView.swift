@@ -24,7 +24,7 @@ class EmployeeFormView: UIView {
     @IBOutlet weak var companyField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var positionDropdown: SwiftyMenu!
-    @IBOutlet weak var contactField: UITextField!
+    @IBOutlet weak var contactField: RestrictedTextField!
     @IBOutlet weak var addressTextView: UITextView!
     
     weak var delegate: EmployeeFormViewDelegate?

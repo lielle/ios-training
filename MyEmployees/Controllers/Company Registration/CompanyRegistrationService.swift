@@ -8,26 +8,19 @@
 
 import UIKit
 
-extension CompanyRegistrationController: CompanyViewDelegate {
+extension CompanyRegistrationController {
     
-    var viewController: UIViewController {
-        return self
-    }
-    
-    func onRegister() {
-        guard let company = getValidCompany() else {
-            return
-        }
+    func addCompany() {
+        let name = companyView.nameField.text ?? ""
+        let username = companyView.usernameField.text ?? ""
+        let password = companyView.passwordField.text ?? ""
+        let contact = companyView.contactField.text ?? ""
+        let address = companyView.addressTextView.text ?? ""
+        
+        let company = Company(name: name, username: username, password: password.sha256(salt: PASSWORD_SALT).hexString, contact: contact, address: address, logoKey: UUID().uuidString)
+        
         company.dao.insert()
         saveImage(companyView.logoImageButton.currentImage, named: company.logoKey!)
-
-        displayOkAlert(title: "Successfully registered", message: "Registration complete.") {
-            self.performSegue(withIdentifier: "registerToLogin", sender: nil)
-        }
-    }
-    
-    func onBackToLogin() {
-        self.performSegue(withIdentifier: "registerToLogin", sender: nil)
     }
     
 }
@@ -35,60 +28,66 @@ extension CompanyRegistrationController: CompanyViewDelegate {
 // MARK: - Validations
 extension CompanyRegistrationController {
     
-    func isNameValid() -> Bool {
-        // special chars not allowed
+    // emptiness checking
+    
+    func isNameSupplied() -> Bool {
         let isEmpty = companyView.nameField.text?.isEmpty ?? true
-        if isEmpty {
-            displayOkAlert(title: "Registration Error", message: "Name is required")
-        }
-        
         return !isEmpty
     }
     
-    func isUsernameValid() -> Bool {
+    func isUsernameSupplied() -> Bool {
         let isEmpty = companyView.usernameField.text?.isEmpty ?? true
-        if isEmpty {
-            displayOkAlert(title: "Registration Error", message: "Username is required")
-        }
-        
         return !isEmpty
     }
     
-    func isPasswordValid() -> Bool {
-        // special chars not allowed
-        // at least 1 uppercase, 1 lowercase and 1 number
+    func isPasswordSupplied() -> Bool {
         let isEmpty = companyView.passwordField.text?.isEmpty ?? true
-        
-        if isEmpty {
-            displayOkAlert(title: "Registration Error", message: "Password is required")
-        }
         return !isEmpty
     }
     
-    func isContactValid() -> Bool {
-        let isEmpty = companyView.contactField.text?.isEmpty ?? true
-        return !isEmpty
+    // duplicate checking
+    
+    func isUsernameUnique() -> Bool {
+        guard let username = companyView.usernameField.text, let _ = CompanyDao.fetchCompanyBy(username: username) else {
+            return true
+        }
+        return false
     }
     
-    func getValidCompany() -> Company? {
-        guard let name = companyView.nameField.text, isNameValid() else {
-            return nil
+    // password validity
+    
+    func isPasswordSecured() -> Bool {
+        // at least 1 uppercase, 1 lowercase and 1 number
+        let password = companyView.passwordField.text!
+        let range = NSRange(location: 0, length: password.utf16.count)
+        let pattern = ".*[a-z]+.*[A-Z]+.*[0-9]+.*"
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let isSecure = regex.firstMatch(in: password, options: [], range: range) != nil
+        return isSecure
+    }
+    
+    func validateCompany() -> Bool {
+        guard isNameSupplied() else {
+            displayOkAlert(title: Label.REGISTRATION_ERROR, message: Label.REQUIRED_NAME_ERROR)
+            return false
         }
-        guard let username = companyView.usernameField.text, isUsernameValid() else {
-            return nil
+        guard isUsernameSupplied() else {
+            displayOkAlert(title: Label.REGISTRATION_ERROR, message: Label.REQUIRED_USERNAME_ERROR)
+            return false
         }
-        guard let password = companyView.passwordField.text, isPasswordValid() else {
-            return nil
+        guard isUsernameUnique() else {
+            displayOkAlert(title: Label.REGISTRATION_ERROR, message: Label.DUPLICATE_USERNAME_ERROR)
+            return false
         }
-        guard let contact = companyView.contactField.text, isContactValid() else {
-            return nil
+        guard isPasswordSupplied() else {
+            displayOkAlert(title: Label.REGISTRATION_ERROR, message: Label.REQUIRED_PASSWORD_ERROR)
+            return false
         }
-        guard let address = companyView.addressTextView.text else {
-            return nil
+        guard isPasswordSecured() else {
+            displayOkAlert(title: Label.REGISTRATION_ERROR, message: Label.PASSWORD_SECURITY_ERROR)
+            return false
         }
-        
-        let company = Company(name: name, username: username, password: password.sha256(salt: PASSWORD_SALT).hexString, contact: contact, address: address, logoKey: UUID().uuidString)
-        return company
+        return true
     }
     
 }

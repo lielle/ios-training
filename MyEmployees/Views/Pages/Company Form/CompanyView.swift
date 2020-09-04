@@ -6,6 +6,7 @@
 //  Copyright © 2020 escience. All rights reserved.
 //
 
+
 import UIKit
 
 // MARK: - CompanyViewDelegate
@@ -29,10 +30,10 @@ class CompanyView: UIView {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var logoImageButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var usernameField: RestrictedTextField!
+    @IBOutlet weak var passwordField: RestrictedTextField!
     @IBOutlet weak var passwordVisibilityButton: UIButton!
-    @IBOutlet weak var contactField: UITextField!
+    @IBOutlet weak var contactField: RestrictedTextField!
     @IBOutlet weak var addressTextView: UITextView!
     
     @IBOutlet weak var passwordStackView: UIStackView!
@@ -60,7 +61,10 @@ class CompanyView: UIView {
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.frame = self.bounds
         addSubview(contentView)
-        
+        setupViews()
+    }
+    
+    func setupViews() {
         passwordField.setRightPaddingPoints(30)
         addressTextView?.addDefaultBorders()
         scrollView.flashScrollIndicators()

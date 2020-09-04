@@ -93,11 +93,12 @@ extension CompanyUpdateController: CompanyViewDelegate {
     }
     
     func onRegister() {
-        validateCompany()
-        replaceImage(named: company.logoKey!, to: companyView.logoImageButton.currentImage!)
-        company.dao.setAsLoggedIn()
-        company.dao.update()
-        displayOkAlert(title: "Profile updated", message: "Your profile has been updated.")
+        guard validateCompany() else {
+            return
+        }
+        
+        updateCompany()
+        displayOkAlert(title: Label.COMPANY_UPDATE_SUCCESS, message: Label.COMPANY_UPDATE_SUCCESS_MESSAGE)
     }
     
 }
