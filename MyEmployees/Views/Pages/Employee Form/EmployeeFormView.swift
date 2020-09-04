@@ -32,7 +32,7 @@ class EmployeeFormView: UIView {
     var imagePicker = UIImagePickerController()
     var selectedPosition: EmployeePosition?
     var selectedPositionIndex: Int?
-    let positions: [SwiftyMenuDisplayable] = EmployeePosition.array(of: Employee.POSITIONS)
+    let positions: [SwiftyMenuDisplayable] = EmployeePosition.DEFAULT_LIST
     
     override init(frame: CGRect) {
         super.init(frame: frame)

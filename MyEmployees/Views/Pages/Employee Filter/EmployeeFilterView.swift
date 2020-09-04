@@ -22,7 +22,7 @@ class EmployeeFilterView: UIView {
     
     weak var delegate: EmployeeFilterViewDelegate?
     
-    let positions: [SwiftyMenuDisplayable] = EmployeePosition.array(of: Employee.POSITIONS)
+    let positions: [SwiftyMenuDisplayable] = EmployeePosition.DEFAULT_WITH_ALL_OPTION
     
     override init(frame: CGRect) {
         super.init(frame: frame)

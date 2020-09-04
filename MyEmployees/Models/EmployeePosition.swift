@@ -11,19 +11,25 @@ import SwiftyMenu
 
 struct EmployeePosition: SwiftyMenuDisplayable {
     
-    var id: Int
-    var description: String
+    static let DEFAULT_LIST = [
+        EmployeePosition(id: 1, description: Label.CEO),
+        EmployeePosition(id: 2, description: Label.PROJECT_MANAGER),
+        EmployeePosition(id: 3, description: Label.ACCOUNT_MANAGER),
+        EmployeePosition(id: 4, description: Label.TECH_LEAD),
+        EmployeePosition(id: 5, description: Label.DEVELOPER),
+        EmployeePosition(id: 6, description: Label.QA),
+    ]
     
-    static func array(of positions: [Int: String]) -> [EmployeePosition] {
-        var employeePositions: [EmployeePosition] = []
-        for position in positions {
-            employeePositions.append(EmployeePosition(id: position.key, description: position.value))
-        }
-        return employeePositions
+    static var DEFAULT_WITH_ALL_OPTION: [EmployeePosition] {
+        let allOption = [EmployeePosition(id: 0, description: Label.ALL_POSITIONS)]
+        return allOption + DEFAULT_LIST
     }
     
+    var id: Int?
+    var description: String
+    
     public var retrievableValue: Any {
-        self.id
+        self.id as Any
     }
     
     public var displayableValue: String {

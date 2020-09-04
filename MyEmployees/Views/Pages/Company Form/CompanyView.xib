@@ -28,7 +28,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqQ-81-wru">
+                <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqQ-81-wru">
                     <rect key="frame" x="20" y="0.0" width="374" height="732"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3QP-nM-nbU">
@@ -93,10 +93,6 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                            <connections>
-                                                <action selector="nameFinishedEditing:" destination="-1" eventType="editingDidEnd" id="hMS-bz-L22"/>
-                                                <action selector="nameStartEditing:" destination="-1" eventType="editingDidBegin" id="kbY-YZ-dj6"/>
-                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>

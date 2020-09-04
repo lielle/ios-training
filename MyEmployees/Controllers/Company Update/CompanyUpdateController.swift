@@ -12,7 +12,7 @@ class CompanyUpdateController: UIViewController {
     
     @IBOutlet weak var companyView: CompanyView!
     
-    weak var company: Company!
+    var company: Company!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class CompanyUpdateController: UIViewController {
     }
     
     func initCompanyFields() {
-        companyView.logoImageButton.setImage(getImage(name: company.logoKey!), for: .normal)
+        companyView.logoImageButton.setImage(getImage(named: company.logoKey!), for: .normal)
         companyView.nameField.text = company.name
         companyView.usernameField.text = company.username
         companyView.contactField.text = company.contact
@@ -64,6 +64,22 @@ class CompanyUpdateController: UIViewController {
 
     @IBAction func onLogout(_ sender: Any) {
         self.performSegue(withIdentifier: "companyToLogin", sender: nil)
+    }
+    
+    func validateCompany() {
+        guard let username = companyView.usernameField.text else {
+            return
+        }
+        guard let contact = companyView.contactField.text else {
+            return
+        }
+        guard let address = companyView.addressTextView.text else {
+            return
+        }
+        
+        company?.username = username
+        company?.contact = contact
+        company?.address = address
     }
     
 }
@@ -75,16 +91,12 @@ extension CompanyUpdateController: CompanyViewDelegate {
         self
     }
     
-    func isNameValid() -> Bool {
-        return true
-    }
-    
     func onRegister() {
-        
-    }
-    
-    func onBackToLogin() {
-        
+        validateCompany()
+        replaceImage(named: company.logoKey!, to: companyView.logoImageButton.currentImage!)
+        company.dao.setAsLoggedIn()
+        company.dao.update()
+        displayOkAlert(title: "Profile updated", message: "Your profile has been updated.")
     }
     
 }

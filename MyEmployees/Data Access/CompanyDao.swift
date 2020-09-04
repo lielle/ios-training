@@ -8,18 +8,19 @@
 
 import Foundation
 
-class CompanyDao {
+class CompanyDao: Codable {
     
-    static func setLoggedIn(company: Company) {
+    var company: Company!
+    
+    init(company: Company) {
+        self.company = company
+    }
+    
+    func setAsLoggedIn() {
         UserDefaults.standard.set(encodable: company, forKey: "company")
     }
     
-    static func getLoggedIn() -> Company? {
-        let company = UserDefaults.standard.value(Company.self, forKey: "company")
-        return company
-    }
-    
-    static func insert(company: Company) {
+    func insert() {
         let query = "INSERT INTO company(name, username, password, contact, address, logo) VALUES (?, ?, ?, ?, ?, ?);"
         let params = [
             company.name!,
@@ -31,6 +32,27 @@ class CompanyDao {
             
         ]
         DatabaseHelper.shared.insert(query: query, params: params)
+    }
+    
+    func update() {
+        let query = "UPDATE company SET username = ?, contact = ?, address = ? WHERE id = ?;"
+        let params: [Any] = [
+            company.username!,
+            company.contact!,
+            company.address!,
+            company.id!
+        ]
+        DatabaseHelper.shared.update(query: query, params: params)
+    }
+    
+}
+
+// MARK: - Static functions
+extension CompanyDao {
+    
+    static func getLoggedIn() -> Company? {
+        let company = UserDefaults.standard.value(Company.self, forKey: "company")
+        return company
     }
     
     static func fetchCompanyPasswordBy(username: String) -> String? {

@@ -34,4 +34,8 @@ class Company: NSObject, Codable {
         self.logoKey = logoKey
     }
     
+    var dao: CompanyDao {
+        CompanyDao(company: self)
+    }
+    
 }

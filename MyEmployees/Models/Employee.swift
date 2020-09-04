@@ -11,14 +11,13 @@ import SwiftyMenu
 
 class Employee: NSObject, Codable {
     
-    static let POSITIONS = [
-        1: "CEO",
-        2: "Project Manager",
-        3: "Account Manager",
-        4: "Tech Lead",
-        5: "Developer",
-        6: "QA",
-    ]
+    static var DEFAULT_POSITIONS: [Int: String] {
+        var positions: [Int:String] = [:]
+        for position in EmployeePosition.DEFAULT_LIST {
+            positions[position.id!] = position.description
+        }
+        return positions
+    }
     
     var id: Int?
     var companyId: Int?
@@ -42,6 +41,10 @@ class Employee: NSObject, Codable {
         self.contact = contact
         self.address = address
         self.logoKey = logoKey
+    }
+    
+    var dao: EmployeeDao {
+        EmployeeDao(employee: self)
     }
     
 }

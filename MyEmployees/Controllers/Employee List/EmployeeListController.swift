@@ -16,6 +16,10 @@ class EmployeeListController: UIViewController {
     var employees: [Employee]!
     var selectedEmployee: Employee? = nil
     
+    var searchText: String? = ""
+    var filterPosition: EmployeePosition? = nil
+    var filterPositionIndex: Int? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +53,8 @@ class EmployeeListController: UIViewController {
         if segue.destination is EmployeeFilterController {
             let vc = segue.destination as! EmployeeFilterController
             vc.delegate = self
+            vc.selectedPosition = filterPosition
+            vc.selectedPositionIndex = filterPositionIndex
         }
         if segue.destination is LoginController {
             UIApplication.shared.windows.first?.rootViewController = segue.destination
@@ -71,6 +77,11 @@ class EmployeeListController: UIViewController {
     func viewEmployeeForm() {
         self.performSegue(withIdentifier: "employeeToForm", sender: nil)
     }
+    
+    func applyFilters() {
+        employees = EmployeeDao.filterEmployees(of: company.id!, by: filterPosition?.id, keyword: employeeListView.searchField.text ?? "")
+        employeeListView.tableView.reloadData()
+    }
 
 }
 
@@ -84,10 +95,10 @@ extension EmployeeListController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {(contextualAction, view, boolValue) in
-//            let person = self.persons[indexPath.row]
-//            self.persons.remove(at: indexPath.row)
-//            DatabaseHelper.shared.delete(id: person.id!)
-//            self.personTableView.reloadData()
+            let rowEmployee = self.employees[indexPath.row]
+            self.employees.remove(at: indexPath.row)
+            rowEmployee.dao.delete()
+            self.employeeListView.tableView.reloadData()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem])
         return swipeActions
@@ -98,6 +109,21 @@ extension EmployeeListController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension EmployeeListController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSections: Int = 0
+        if employees.count > 0
+        {
+            tableView.separatorStyle = .singleLine
+            numOfSections = 1
+            tableView.backgroundView = nil
+        } else {
+            let noDataView = EmptyTableView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            tableView.backgroundView = noDataView
+            tableView.separatorStyle = .none
+        }
+        return numOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
     }
@@ -105,9 +131,9 @@ extension EmployeeListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: EmployeeCell = tableView.dequeueReusableCell(withIdentifier: String(describing: EmployeeCell.self)) as! EmployeeCell
         let rowEmployee = employees[indexPath.row]
-        cell.logoImageView.image = getImage(name: (rowEmployee.logoKey)!)
+        cell.logoImageView.image = getImage(named: (rowEmployee.logoKey)!)
         cell.nameLabel.text = rowEmployee.name
-        cell.positionLabel.text = Employee.POSITIONS[rowEmployee.positionId!]
+        cell.positionLabel.text = Employee.DEFAULT_POSITIONS[rowEmployee.positionId!]
         
         return cell
     }
@@ -117,13 +143,10 @@ extension EmployeeListController: UITableViewDataSource {
 // MARK: - EmployeeFilterControllerDelegate
 extension EmployeeListController: EmployeeFilterControllerDelegate {
     
-    func onFilterApplied(positionId: Int?) {
-        if let positionId = positionId {
-            employees = EmployeeDao.filterEmployees(of: company.id!, by: positionId)
-        } else {
-            employees = EmployeeDao.searchEmployees(of: company.id!, keyword: "")
-        }
-        employeeListView.tableView.reloadData()
+    func onFilterApplied(position: EmployeePosition?, index: Int?) {
+        filterPosition = position
+        filterPositionIndex = index
+        applyFilters()
     }
     
 }
@@ -136,8 +159,7 @@ extension EmployeeListController: EmployeeListViewDelegate {
     }
     
     func onSearch() {
-        employees = EmployeeDao.searchEmployees(of: company.id!, keyword: employeeListView.searchField.text ?? "")
-        employeeListView.tableView.reloadData()
+        applyFilters()
     }
     
 }

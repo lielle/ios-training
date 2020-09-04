@@ -15,7 +15,7 @@ extension LoginController {
             displayOkAlert(title: "Login", message: "Company not found.")
             return
         }
-        CompanyDao.setLoggedIn(company: company)
+        company.dao.setAsLoggedIn()
     }
     
 }

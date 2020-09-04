@@ -65,7 +65,7 @@ extension DatabaseHelper {
     
 }
 
-// MARK: - INSERT QUERIES
+// MARK: - MODIFY QUERIES
 extension DatabaseHelper {
     
     func insert(query: String, params: [Any]) {
@@ -84,7 +84,7 @@ extension DatabaseHelper {
             }
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
-                print("Executed: \(query)")
+                print("Insert: \(query)")
             } else {
                 print("Could not insert \(query)")
             }
@@ -92,6 +92,58 @@ extension DatabaseHelper {
             print("INSERT statement could not be prepared.")
         }
         sqlite3_finalize(insertStatement)
+    }
+    
+    func update(query: String, params: [Any]) {
+        
+        let updateStatementString = query
+        var updateStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            
+            // add params
+            for (index, param) in params.enumerated() {
+                if param is String {
+                    sqlite3_bind_text(updateStatement, Int32(index+1), (param as! NSString).utf8String, -1, nil)
+                } else if param is Int {
+                    sqlite3_bind_int(updateStatement, Int32(index+1), Int32(truncating: param as! NSNumber))
+                }
+            }
+            
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Update: \(query), params: \(params)")
+            } else {
+                print("Could not updated row.")
+            }
+        } else {
+            print("UPDATE statement could not be prepared.")
+        }
+        sqlite3_finalize(updateStatement)
+    }
+    
+    func delete(query: String, params: [Any]) {
+        let deleteStatementString = query
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
+            
+            // add params
+            for (index, param) in params.enumerated() {
+                if param is String {
+                    sqlite3_bind_text(deleteStatement, Int32(index+1), (param as! NSString).utf8String, -1, nil)
+                } else if param is Int {
+                    sqlite3_bind_int(deleteStatement, Int32(index+1), Int32(truncating: param as! NSNumber))
+                }
+            }
+            
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Delete: \(query), params: \(params)")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        sqlite3_finalize(deleteStatement)
     }
     
 }
@@ -130,6 +182,7 @@ extension DatabaseHelper {
                 }
                 rows.append(columns)
             }
+            print("Fetch: \(query), params: \(params)")
             
         } else {
             print("SELECT statement could not be prepared")

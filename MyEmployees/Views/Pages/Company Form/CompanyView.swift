@@ -8,13 +8,19 @@
 
 import UIKit
 
+// MARK: - CompanyViewDelegate
 protocol CompanyViewDelegate: AnyObject {
     var viewController: UIViewController { get }
-    func isNameValid() -> Bool
     func onRegister()
     func onBackToLogin()
 }
 
+extension CompanyViewDelegate {
+    func onBackToLogin() {
+    }
+}
+
+// MARK: - CompanyView
 @IBDesignable
 class CompanyView: UIView {
 
@@ -66,22 +72,6 @@ class CompanyView: UIView {
         let view = nib.instantiate(withOwner: self, options: nil).first as? UIView
         
         return view
-    }
-    
-}
-
-// MARK: - Text Field/View Events
-extension CompanyView {
-    
-    @IBAction func nameStartEditing(_ sender: Any) {
-        nameField.backgroundColor = UIColor.white.withAlphaComponent(0)
-    }
-    
-    @IBAction func nameFinishedEditing(_ sender: Any) {
-        guard let delegate = self.delegate, delegate.isNameValid() else {
-            nameField.backgroundColor = UIColor.red.withAlphaComponent(0.2)
-            return
-        }
     }
     
 }

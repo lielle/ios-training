@@ -18,6 +18,8 @@
 		B0454D3B24FE8E9200BCB557 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0454D3A24FE8E9200BCB557 /* LoginView.swift */; };
 		B0454D3E24FEA4B100BCB557 /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0454D3D24FEA4B100BCB557 /* CompanyView.swift */; };
 		B0454D4024FEA4BC00BCB557 /* CompanyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0454D3F24FEA4BC00BCB557 /* CompanyView.xib */; };
+		B05962B42501E5D70083EEDC /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05962B32501E5D70083EEDC /* EmptyTableView.xib */; };
+		B05C43522501E63D006E83CF /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05C43512501E63D006E83CF /* EmptyTableView.swift */; };
 		B063789524F7B9B4001BE75A /* EmployeeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063789324F7B9B4001BE75A /* EmployeeListController.swift */; };
 		B082B2E624F3E9C5005A1771 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B082B2E524F3E9C5005A1771 /* Strings.swift */; };
 		B08BBF4524EF79FD00835AF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08BBF4424EF79FD00835AF0 /* AppDelegate.swift */; };
@@ -41,7 +43,6 @@
 		B0BB09F524FF1D770083D676 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09F424FF1D770083D676 /* UIViewControllerExtensions.swift */; };
 		B0BB09F724FF1DA30083D676 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09F624FF1DA30083D676 /* UITextViewExtensions.swift */; };
 		B0BB09F924FF1DC20083D676 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09F824FF1DC20083D676 /* UITextFieldExtensions.swift */; };
-		B0BB09FB24FF1DDA0083D676 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09FA24FF1DDA0083D676 /* UIImageExtensions.swift */; };
 		B0BB09FD24FF1E160083D676 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09FC24FF1E160083D676 /* DataExtensions.swift */; };
 		B0BB09FF24FF1E300083D676 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB09FE24FF1E300083D676 /* StringExtensions.swift */; };
 		B0BB0A0124FF1E4C0083D676 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB0A0024FF1E4C0083D676 /* UserDefaultsExtensions.swift */; };
@@ -93,6 +94,8 @@
 		B0454D3A24FE8E9200BCB557 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B0454D3D24FEA4B100BCB557 /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
 		B0454D3F24FEA4BC00BCB557 /* CompanyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyView.xib; sourceTree = "<group>"; };
+		B05962B32501E5D70083EEDC /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
+		B05C43512501E63D006E83CF /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		B063789324F7B9B4001BE75A /* EmployeeListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListController.swift; sourceTree = "<group>"; };
 		B082B2E524F3E9C5005A1771 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		B08BBF4124EF79FD00835AF0 /* MyEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +125,6 @@
 		B0BB09F424FF1D770083D676 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B0BB09F624FF1DA30083D676 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
 		B0BB09F824FF1DC20083D676 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
-		B0BB09FA24FF1DDA0083D676 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		B0BB09FC24FF1E160083D676 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		B0BB09FE24FF1E300083D676 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B0BB0A0024FF1E4C0083D676 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
@@ -243,6 +245,15 @@
 			path = "Company Form";
 			sourceTree = "<group>";
 		};
+		B05C43502501E61A006E83CF /* Empty Table View */ = {
+			isa = PBXGroup;
+			children = (
+				B05962B32501E5D70083EEDC /* EmptyTableView.xib */,
+				B05C43512501E63D006E83CF /* EmptyTableView.swift */,
+			);
+			path = "Empty Table View";
+			sourceTree = "<group>";
+		};
 		B063789124F7B67C001BE75A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,8 +312,8 @@
 			children = (
 				B0454D3524FE8D5B00BCB557 /* Interfaces */,
 				B095798724FB95BD00DE63D3 /* Models */,
-				B0454D2A24FE765200BCB557 /* Views */,
 				B0978B6225009DA600FC0C53 /* Data Access */,
+				B0454D2A24FE765200BCB557 /* Views */,
 				B063789124F7B67C001BE75A /* Controllers */,
 				B08BBF8B24EFB01500835AF0 /* Helpers */,
 				B0BB09F124FF1D2C0083D676 /* Library Extensions */,
@@ -406,7 +417,6 @@
 				B0BB09F424FF1D770083D676 /* UIViewControllerExtensions.swift */,
 				B0BB09F624FF1DA30083D676 /* UITextViewExtensions.swift */,
 				B0BB09F824FF1DC20083D676 /* UITextFieldExtensions.swift */,
-				B0BB09FA24FF1DDA0083D676 /* UIImageExtensions.swift */,
 				B0BB09FC24FF1E160083D676 /* DataExtensions.swift */,
 				B0BB09FE24FF1E300083D676 /* StringExtensions.swift */,
 				B0BB0A0024FF1E4C0083D676 /* UserDefaultsExtensions.swift */,
@@ -444,6 +454,7 @@
 		B0C574D924FFE1AF003612E7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B05C43502501E61A006E83CF /* Empty Table View */,
 				B0C574D424FFCE59003612E7 /* Employee Cell */,
 			);
 			path = Components;
@@ -615,6 +626,7 @@
 				B0454D4024FEA4BC00BCB557 /* CompanyView.xib in Resources */,
 				B0454D2F24FE79E900BCB557 /* SplashscreenView.xib in Resources */,
 				B0C574D824FFCE79003612E7 /* EmployeeCell.xib in Resources */,
+				B05962B42501E5D70083EEDC /* EmptyTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0C574E324FFEF46003612E7 /* EmployeeFormView.swift in Sources */,
+				B05C43522501E63D006E83CF /* EmptyTableView.swift in Sources */,
 				B0BB09F924FF1DC20083D676 /* UITextFieldExtensions.swift in Sources */,
 				B08BBF4924EF79FD00835AF0 /* WelcomeScreenController.swift in Sources */,
 				B0454D2D24FE76AD00BCB557 /* SplashscreenView.swift in Sources */,
@@ -768,7 +781,6 @@
 				B0454D3B24FE8E9200BCB557 /* LoginView.swift in Sources */,
 				B0C574CE24FF9169003612E7 /* CompanyUpdateController.swift in Sources */,
 				B0BB09F324FF1D480083D676 /* UIProgressViewExtensions.swift in Sources */,
-				B0BB09FB24FF1DDA0083D676 /* UIImageExtensions.swift in Sources */,
 				B0BB09FD24FF1E160083D676 /* DataExtensions.swift in Sources */,
 				B0BB09FF24FF1E300083D676 /* StringExtensions.swift in Sources */,
 				B0BB0A0124FF1E4C0083D676 /* UserDefaultsExtensions.swift in Sources */,

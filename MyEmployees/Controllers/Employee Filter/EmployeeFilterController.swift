@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmployeeFilterControllerDelegate: AnyObject {
-    func onFilterApplied(positionId: Int?)
+    func onFilterApplied(position: EmployeePosition?, index: Int?)
 }
 
 class EmployeeFilterController: UIViewController {
@@ -18,10 +18,18 @@ class EmployeeFilterController: UIViewController {
     
     weak var delegate: EmployeeFilterControllerDelegate?
     
+    var selectedPosition: EmployeePosition? = nil
+    var selectedPositionIndex: Int? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         employeeFilterView.delegate = self
+        
+        if let selectedPositionIndex = selectedPositionIndex, let selectedPosition = selectedPosition {
+            employeeFilterView.positionDropdown.selectedIndex = selectedPositionIndex
+            employeeFilterView.positionDropdown.placeHolderText = selectedPosition.description
+        }
     }
         
     override func viewDidAppear(_ animated: Bool) {
@@ -51,13 +59,15 @@ class EmployeeFilterController: UIViewController {
 extension EmployeeFilterController: EmployeeFilterViewDelegate {
     
     func onFilter() {
-        var positionId: Int? = nil
-        if let index = employeeFilterView.positionDropdown.selectedIndex {
-            let position = employeeFilterView.positionDropdown.items[index] as! EmployeePosition
-            positionId = position.id
+        var position: EmployeePosition?
+        let index = employeeFilterView.positionDropdown.selectedIndex
+        if let index = index {
+            position = employeeFilterView.positionDropdown.items[index] as? EmployeePosition
+            let positionId = position?.id
+            position?.id = positionId == 0 ? nil : positionId
         }
         
-        self.delegate?.onFilterApplied(positionId: positionId)
+        self.delegate?.onFilterApplied(position: position, index: index)
     }
     
     var viewController: UIViewController {

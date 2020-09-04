@@ -44,6 +44,11 @@ class EmployeeFormController: UIViewController {
     deinit {
         print("EmployeeFormController deinit called")
     }
+
+}
+
+// MARK: - Init
+extension EmployeeFormController {
     
     func initCompanyField() {
         company = CompanyDao.getLoggedIn()
@@ -55,18 +60,25 @@ class EmployeeFormController: UIViewController {
             return
         }
         
-        let selectedIndex = employeeFormView.positionDropdown.items.firstIndex { item in
+        if let selectedIndex = employeeFormView.positionDropdown.items.firstIndex(where: { item in
             return item.retrievableValue as! Int == employee.positionId!
+        }) {
+            employeeFormView.selectedPosition = employeeFormView.positionDropdown.items[selectedIndex] as? EmployeePosition
+            employeeFormView.positionDropdown.selectedIndex = selectedIndex
         }
         
-        employeeFormView.positionDropdown.selectedIndex = selectedIndex
-        employeeFormView.positionDropdown.placeHolderText = Employee.POSITIONS[employee.positionId!]
+        employeeFormView.positionDropdown.placeHolderText = Employee.DEFAULT_POSITIONS[employee.positionId!]
         
-        employeeFormView.logoImageButton.setImage(getImage(name: employee.logoKey!), for: .normal)
+        employeeFormView.logoImageButton.setImage(getImage(named: employee.logoKey!), for: .normal)
         employeeFormView.nameField.text = employee.name
         employeeFormView.contactField.text = employee.contact
         employeeFormView.addressTextView.text = employee.address
     }
+    
+}
+
+// MARK: - Validations
+extension EmployeeFormController {
     
     func validateEmployee() {
         guard let name = employeeFormView.nameField.text else {
@@ -91,7 +103,7 @@ class EmployeeFormController: UIViewController {
             employee?.address = address
         }
     }
-
+    
 }
 
 // MARK: - EmployeeFormViewDelegate
@@ -105,13 +117,15 @@ extension EmployeeFormController: EmployeeFormViewDelegate {
         }
         
         if employee.id == nil {
-            EmployeeDao.insert(employee: employee)
-            employeeFormView.logoImageButton.currentImage?.saveAsJpg(employee.logoKey!)
+            employee.dao.insert()
+            saveImage(employeeFormView.logoImageButton.currentImage, named: employee.logoKey!)
             displayOkAlert(title: "Successfully saved", message: "New employee has been saved.") {
                 self.delegate?.onSave()
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
+            employee.dao.update()
+            replaceImage(named: employee.logoKey!, to: employeeFormView.logoImageButton.currentImage!)
             displayOkAlert(title: "Successfully updated", message: "Employee has been updated.") {
                 self.delegate?.onSave()
                 self.dismiss(animated: true, completion: nil)

@@ -14,22 +14,12 @@ extension CompanyRegistrationController: CompanyViewDelegate {
         return self
     }
     
-    func isNameValid() -> Bool {
-        // special chars not allowed
-        let isEmpty = companyView.nameField.text?.isEmpty ?? true
-        if isEmpty {
-            displayOkAlert(title: "Registration Error", message: "Name is required")
-        }
-        
-        return !isEmpty
-    }
-    
     func onRegister() {
         guard let company = getValidCompany() else {
             return
         }
-        CompanyDao.insert(company: company)
-        companyView.logoImageButton.currentImage?.saveAsJpg(company.logoKey!)
+        company.dao.insert()
+        saveImage(companyView.logoImageButton.currentImage, named: company.logoKey!)
 
         displayOkAlert(title: "Successfully registered", message: "Registration complete.") {
             self.performSegue(withIdentifier: "registerToLogin", sender: nil)
@@ -45,6 +35,15 @@ extension CompanyRegistrationController: CompanyViewDelegate {
 // MARK: - Validations
 extension CompanyRegistrationController {
     
+    func isNameValid() -> Bool {
+        // special chars not allowed
+        let isEmpty = companyView.nameField.text?.isEmpty ?? true
+        if isEmpty {
+            displayOkAlert(title: "Registration Error", message: "Name is required")
+        }
+        
+        return !isEmpty
+    }
     
     func isUsernameValid() -> Bool {
         let isEmpty = companyView.usernameField.text?.isEmpty ?? true
