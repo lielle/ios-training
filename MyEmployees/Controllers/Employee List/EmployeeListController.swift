@@ -71,6 +71,7 @@ class EmployeeListController: UIViewController {
     }
     
     @IBAction func onLogout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "company")
         self.performSegue(withIdentifier: "employeeToLogin", sender: nil)
     }
     

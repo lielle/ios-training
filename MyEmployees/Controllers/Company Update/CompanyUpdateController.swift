@@ -63,6 +63,7 @@ class CompanyUpdateController: UIViewController {
     }
 
     @IBAction func onLogout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "company")
         self.performSegue(withIdentifier: "companyToLogin", sender: nil)
     }
     

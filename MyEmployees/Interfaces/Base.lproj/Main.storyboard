@@ -21,6 +21,7 @@
                     <connections>
                         <outlet property="splashscreenView" destination="8bC-Xf-vdC" id="4b3-fq-WeS"/>
                         <segue destination="if9-8M-Aeb" kind="show" identifier="welcomeToLogin" id="6js-sY-sBP"/>
+                        <segue destination="CHd-gi-rHv" kind="show" identifier="welcomeToMain" id="Pqs-vh-5gW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -46,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0x-re-qOx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="101"/>
+            <point key="canvasLocation" x="929" y="-334"/>
         </scene>
         <!--Splashscreen Controller-->
         <scene sceneID="opt-uk-X9K">
@@ -66,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbN-EN-mfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="101"/>
+            <point key="canvasLocation" x="1703" y="-334"/>
         </scene>
         <!--Company Profile-->
         <scene sceneID="kbA-7J-bWi">
@@ -299,7 +300,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rcA-3t-3so"/>
+        <segue reference="Pqs-vh-5gW"/>
+        <segue reference="6js-sY-sBP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.3" catalog="system" width="128" height="62"/>

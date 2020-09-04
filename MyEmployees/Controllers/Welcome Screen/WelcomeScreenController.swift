@@ -19,8 +19,12 @@ class WelcomeScreenController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         splashscreenView.logoImageView.image = UIImage(named: "ESC Logo")
-        splashscreenView.progressView.setAnimatedProgress(duration: 0) {
-            self.performSegue(withIdentifier: "welcomeToLogin", sender: nil)
+        splashscreenView.progressView.setAnimatedProgress(duration: 2) {
+            if CompanyDao.getLoggedIn() != nil {
+                self.performSegue(withIdentifier: "welcomeToMain", sender: nil)
+            } else {
+                self.performSegue(withIdentifier: "welcomeToLogin", sender: nil)
+            }
         }
     }
     
