@@ -74,7 +74,8 @@ class EmployeeListController: UIViewController {
     }
     
     func applyFilters() {
-        employees = EmployeeDao.filterEmployees(of: company.id!, by: filterPosition?.id, keyword: employeeListView.searchField.text ?? "")
+        let positionId = filterPosition?.id == 0 ? nil : filterPosition?.id
+        employees = EmployeeDao.filterEmployees(of: company.id!, by: positionId, keyword: employeeListView.searchField.text ?? "")
         employeeListView.tableView.reloadData()
     }
 

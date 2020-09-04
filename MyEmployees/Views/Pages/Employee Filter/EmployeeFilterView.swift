@@ -24,6 +24,9 @@ class EmployeeFilterView: UIView {
     
     let positions: [SwiftyMenuDisplayable] = EmployeePosition.DEFAULT_WITH_ALL_OPTION
     
+    var selectedPosition: EmployeePosition? = nil
+    var selectedPositionIndex: Int? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -67,7 +70,8 @@ class EmployeeFilterView: UIView {
 extension EmployeeFilterView: SwiftyMenuDelegate {
     
     func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        print("Selected option: \(item), at index: \(index)")
+        selectedPosition = item as? EmployeePosition
+        selectedPositionIndex = index
     }
     
 }

@@ -59,13 +59,8 @@ class EmployeeFilterController: UIViewController {
 extension EmployeeFilterController: EmployeeFilterViewDelegate {
     
     func onFilter() {
-        var position: EmployeePosition?
-        let index = employeeFilterView.positionDropdown.selectedIndex
-        if let index = index {
-            position = employeeFilterView.positionDropdown.items[index] as? EmployeePosition
-            let positionId = position?.id
-            position?.id = positionId == 0 ? nil : positionId
-        }
+        let position = employeeFilterView.selectedPosition
+        let index = employeeFilterView.selectedPositionIndex
         
         self.delegate?.onFilterApplied(position: position, index: index)
     }
