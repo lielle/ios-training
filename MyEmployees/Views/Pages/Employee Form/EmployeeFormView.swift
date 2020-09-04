@@ -96,7 +96,6 @@ extension EmployeeFormView {
 extension EmployeeFormView: SwiftyMenuDelegate {
     
     func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        swiftyMenu.toggle()
         selectedPositionIndex = index
         selectedPosition = item as? EmployeePosition
     }

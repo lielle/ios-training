@@ -297,7 +297,7 @@ extension SwiftyMenu: UITableViewDelegate {
                 setSelectedOptionsAsTitle()
                 tableView.reloadData()
                 if hideOptionsWhenSelect {
-                    collapseSwiftyMenu()
+                    handleMenuState()
                 }
             } else {
                 selectedIndecis[indexPath.row] = indexPath.row
@@ -307,13 +307,13 @@ extension SwiftyMenu: UITableViewDelegate {
                 self.didSelectItem(self, selectedText, indexPath.row)
                 tableView.reloadData()
                 if hideOptionsWhenSelect {
-                    collapseSwiftyMenu()
+                    handleMenuState()
                 }
             }
         } else {
             if selectedIndex == indexPath.row {
                 if hideOptionsWhenSelect {
-                    collapseSwiftyMenu()
+                    handleMenuState()
                 }
             } else {
                 selectedIndex = indexPath.row
@@ -323,7 +323,7 @@ extension SwiftyMenu: UITableViewDelegate {
                 self.didSelectItem(self, selectedText, indexPath.row)
                 tableView.reloadData()
                 if hideOptionsWhenSelect {
-                    collapseSwiftyMenu()
+                    handleMenuState()
                 }
             }
         }

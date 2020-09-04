@@ -67,7 +67,7 @@ class EmployeeFilterView: UIView {
 extension EmployeeFilterView: SwiftyMenuDelegate {
     
     func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
-        swiftyMenu.toggle()
+        print("Selected option: \(item), at index: \(index)")
     }
     
 }
