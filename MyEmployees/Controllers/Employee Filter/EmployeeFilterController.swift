@@ -27,6 +27,8 @@ class EmployeeFilterController: UIViewController {
         employeeFilterView.delegate = self
         
         if let selectedPositionIndex = selectedPositionIndex, let selectedPosition = selectedPosition {
+            employeeFilterView.selectedPosition = selectedPosition
+            employeeFilterView.selectedPositionIndex = selectedPositionIndex
             employeeFilterView.positionDropdown.selectedIndex = selectedPositionIndex
             employeeFilterView.positionDropdown.placeHolderText = selectedPosition.description
         }
