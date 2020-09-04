@@ -39,7 +39,7 @@ extension CompanyUpdateController {
     // duplicate checking
     
     func isUsernameUnique() -> Bool {
-        guard let username = companyView.usernameField.text, let _ = CompanyDao.fetchCompanyBy(username: username) else {
+        guard let username = companyView.usernameField.text, username != company.username, let _ = CompanyDao.fetchCompanyBy(username: username) else {
             return true
         }
         return false
