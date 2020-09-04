@@ -26,10 +26,6 @@ class WelcomeScreenController: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIApplication.shared.windows.first?.rootViewController = segue.destination
-    }
-    
     deinit {
         print("WelcomeScreenController deinit called")
     }

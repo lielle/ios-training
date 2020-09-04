@@ -60,10 +60,14 @@ extension CompanyRegistrationController {
         // at least 1 uppercase, 1 lowercase and 1 number
         let password = companyView.passwordField.text!
         let range = NSRange(location: 0, length: password.utf16.count)
-        let pattern = ".*[a-z]+.*[A-Z]+.*[0-9]+.*"
-        let regex = try! NSRegularExpression(pattern: pattern)
-        let isSecure = regex.firstMatch(in: password, options: [], range: range) != nil
-        return isSecure
+        let patterns = [".*[a-z]+.*", ".*[A-Z]+.*", ".*[0-9]+.*"]
+        for pattern in patterns {
+            let regex = try! NSRegularExpression(pattern: pattern)
+            guard regex.firstMatch(in: password, options: [], range: range) != nil else {
+                return false
+            }
+        }
+        return true
     }
     
     func validateCompany() -> Bool {

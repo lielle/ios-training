@@ -20,13 +20,20 @@ class EmployeeListController: UIViewController {
     var filterPosition: EmployeePosition? = nil
     var filterPositionIndex: Int? = nil
     
+    func removePreviousControllers() {
+        let visibleVc = (navigationController?.visibleViewController)! as UIViewController
+        navigationController?.setViewControllers([visibleVc], animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        removePreviousControllers()
         
         guard let loggedCompany = CompanyDao.getLoggedIn() else {
             return
         }
         company = loggedCompany
+        
         employees = EmployeeDao.fetchEmployees(of: company.id!)
         employeeListView.delegate = self
         
@@ -56,23 +63,10 @@ class EmployeeListController: UIViewController {
             vc.selectedPosition = filterPosition
             vc.selectedPositionIndex = filterPositionIndex
         }
-        if segue.destination is LoginController {
-            UIApplication.shared.windows.first?.rootViewController = segue.destination
-        }
     }
     
     deinit {
         print("EmployeeListController deinit called")
-    }
-    
-    @IBAction func onAddEmployee(_ sender: Any) {
-        selectedEmployee = nil
-        viewEmployeeForm()
-    }
-    
-    @IBAction func onLogout(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "company")
-        self.performSegue(withIdentifier: "employeeToLogin", sender: nil)
     }
     
     func viewEmployeeForm() {
@@ -84,6 +78,21 @@ class EmployeeListController: UIViewController {
         employeeListView.tableView.reloadData()
     }
 
+}
+
+// MARK: Button actions
+extension EmployeeListController {
+    
+    @IBAction func onAddEmployee(_ sender: Any) {
+        selectedEmployee = nil
+        viewEmployeeForm()
+    }
+    
+    @IBAction func onLogout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "company")
+        self.performSegue(withIdentifier: "employeeToLogin", sender: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate

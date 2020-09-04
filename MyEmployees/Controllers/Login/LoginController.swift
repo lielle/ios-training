@@ -14,18 +14,20 @@ class LoginController: UIViewController {
     
     var hashedPassword: String?
     
+    func removePreviousControllers() {
+        let visibleVc = (navigationController?.visibleViewController)! as UIViewController
+        navigationController?.setViewControllers([visibleVc], animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        removePreviousControllers()
         loginView.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         dismiss(animated: false, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIApplication.shared.windows.first?.rootViewController = segue.destination
     }
     
     deinit {

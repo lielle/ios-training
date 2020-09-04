@@ -12,8 +12,14 @@ class CompanyRegistrationController: UIViewController {
     
     @IBOutlet var companyView: CompanyView!
     
+    func removePreviousControllers() {
+        let visibleVc = (navigationController?.visibleViewController)! as UIViewController
+        navigationController?.setViewControllers([visibleVc], animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        removePreviousControllers()
         companyView.delegate = self
     }
     
@@ -24,10 +30,6 @@ class CompanyRegistrationController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         dismiss(animated: false, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIApplication.shared.windows.first?.rootViewController = segue.destination
     }
     
     deinit {

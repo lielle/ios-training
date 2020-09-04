@@ -36,10 +36,6 @@ class CompanyUpdateController: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIApplication.shared.windows.first?.rootViewController = segue.destination
-    }
-    
     deinit {
         print("CompanyUpdateController deinit called")
     }
