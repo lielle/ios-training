@@ -10,7 +10,7 @@ import Foundation
 
 class CompanyDao: Codable {
     
-    var company: Company!
+    var company: Company
     
     init(company: Company) {
         self.company = company
@@ -23,12 +23,12 @@ class CompanyDao: Codable {
     func insert() {
         let query = "INSERT INTO company(name, username, password, contact, address, logo) VALUES (?, ?, ?, ?, ?, ?);"
         let params = [
-            company.name!,
-            company.username!,
-            company.password!,
-            company.contact!,
-            company.address!,
-            company.logoKey!,
+            company.name,
+            company.username,
+            company.password,
+            company.contact,
+            company.address,
+            company.logoKey,
             
         ]
         DatabaseHelper.shared.insert(query: query, params: params)
@@ -37,10 +37,10 @@ class CompanyDao: Codable {
     func update() {
         let query = "UPDATE company SET username = ?, contact = ?, address = ? WHERE id = ?;"
         let params: [Any] = [
-            company.username!,
-            company.contact!,
-            company.address!,
-            company.id!
+            company.username,
+            company.contact,
+            company.address,
+            company.id ?? 0
         ]
         DatabaseHelper.shared.update(query: query, params: params)
     }

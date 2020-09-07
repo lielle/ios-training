@@ -40,10 +40,25 @@ class LoginController: UIViewController {
 extension LoginController: LoginViewDelegate {
     
     func onLogin() {
-        if isLoginValid() {
-            onValidLogin()
-            self.performSegue(withIdentifier: "loginToSplash", sender: nil)
+        let loginService = LoginService(username: loginView.usernameField.text, password: loginView.passwordField.text)
+        
+        guard loginService.isUsernameExisting() else {
+            displayOkAlert(title: "Login error", message: "Username does not exist.")
+            return
         }
+        guard loginService.areCredentialsValid() else {
+            displayOkAlert(title: "Login error", message: "Username and password do not match.")
+            return
+        }
+        
+        do {
+            try loginService.setLoggedInCompany()
+        } catch {
+            displayOkAlert(title: "Login error", message: "Company could not be logged in.")
+            return
+        }
+        
+        self.performSegue(withIdentifier: "loginToSplash", sender: nil)
     }
     
     func onSignup() {

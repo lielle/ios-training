@@ -24,7 +24,7 @@ class SplashscreenController: UIViewController {
         guard let company = CompanyDao.getLoggedIn() else {
             return
         }
-        splashscreenView.logoImageView.image = getImage(named: company.logoKey!)
+        splashscreenView.logoImageView.image = FileHelper.getImage(named: company.logoKey)
     }
     
     override func viewDidAppear(_ animated: Bool) {

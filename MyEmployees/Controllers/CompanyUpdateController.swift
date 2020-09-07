@@ -51,32 +51,21 @@ class CompanyUpdateController: UIViewController {
     }
     
     func initCompanyFields() {
-        companyView.logoImageButton.setImage(getImage(named: company.logoKey!), for: .normal)
+        companyView.logoImageButton.setImage(FileHelper.getImage(named: company.logoKey), for: .normal)
         companyView.nameField.text = company.name
         companyView.usernameField.text = company.username
         companyView.contactField.text = company.contact
         companyView.addressTextView.text = company.address
     }
+    
+}
+
+// MARK: - Button actions
+extension CompanyUpdateController {
 
     @IBAction func onLogout(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "company")
         self.performSegue(withIdentifier: "companyToLogin", sender: nil)
-    }
-    
-    func validateCompany() {
-        guard let username = companyView.usernameField.text else {
-            return
-        }
-        guard let contact = companyView.contactField.text else {
-            return
-        }
-        guard let address = companyView.addressTextView.text else {
-            return
-        }
-        
-        company?.username = username
-        company?.contact = contact
-        company?.address = address
     }
     
 }
@@ -89,11 +78,24 @@ extension CompanyUpdateController: CompanyViewDelegate {
     }
     
     func onRegister() {
-        guard validateCompany() else {
+        let updateService = CompanyUpdateService(company: company, username: companyView.usernameField.text, contact: companyView.contactField.text, address: companyView.addressTextView.text, logo: companyView.logoImageButton.currentImage!)
+        
+        guard updateService.isUsernameSupplied() else {
+            displayOkAlert(title: Label.COMPANY_UPDATE_ERROR, message: Label.REQUIRED_USERNAME_ERROR)
+            return
+        }
+        guard updateService.isUsernameUnique() else {
+            displayOkAlert(title: Label.COMPANY_UPDATE_ERROR, message: Label.DUPLICATE_USERNAME_ERROR)
             return
         }
         
-        updateCompany()
+        do {
+            try updateService.update()
+        } catch {
+            displayOkAlert(title: Label.COMPANY_UPDATE_ERROR, message: Label.DUPLICATE_USERNAME_ERROR)
+            return
+        }
+        
         displayOkAlert(title: Label.COMPANY_UPDATE_SUCCESS, message: Label.COMPANY_UPDATE_SUCCESS_MESSAGE)
     }
     

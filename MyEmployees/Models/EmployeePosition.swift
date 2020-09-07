@@ -25,7 +25,7 @@ struct EmployeePosition: SwiftyMenuDisplayable {
         return allOption + DEFAULT_LIST
     }
     
-    var id: Int?
+    var id: Int
     var description: String
     
     public var retrievableValue: Any {

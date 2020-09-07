@@ -10,7 +10,7 @@ import Foundation
 
 class EmployeeDao: Codable {
     
-    var employee: Employee!
+    var employee: Employee
     
     init(employee: Employee) {
         self.employee = employee
@@ -19,12 +19,12 @@ class EmployeeDao: Codable {
     func insert() {
         let query = "INSERT INTO employee(name, companyId, positionId, contact, address, logo) VALUES (?, ?, ?, ?, ?, ?);"
         let params: [Any] = [
-            employee.name!,
-            employee.companyId!,
-            employee.positionId!,
-            employee.contact!,
-            employee.address!,
-            employee.logoKey!,
+            employee.name,
+            employee.companyId,
+            employee.positionId,
+            employee.contact,
+            employee.address,
+            employee.logoKey,
             
         ]
         DatabaseHelper.shared.insert(query: query, params: params)
@@ -33,11 +33,11 @@ class EmployeeDao: Codable {
     func update() {
         let query = "UPDATE employee SET name = ?, positionId = ?, contact = ?, address = ? WHERE id = ?;"
         let params: [Any] = [
-            employee.name!,
-            employee.positionId!,
-            employee.contact!,
-            employee.address!,
-            employee.id!
+            employee.name,
+            employee.positionId,
+            employee.contact,
+            employee.address,
+            employee.id ?? 0
         ]
         DatabaseHelper.shared.update(query: query, params: params)
     }
@@ -60,8 +60,8 @@ extension EmployeeDao {
     }
     
     static func filterEmployees(of companyId: Int, by positionId: Int? = nil, keyword: String? = nil) -> [Employee] {
-        var query: String!
-        var params: [Any]!
+        var query: String
+        var params: [Any]
         
         if let positionId = positionId, let keyword = keyword {
             // filter by position and keyword

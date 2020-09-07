@@ -14,25 +14,25 @@ class Employee: NSObject, Codable {
     static var DEFAULT_POSITIONS: [Int: String] {
         var positions: [Int:String] = [:]
         for position in EmployeePosition.DEFAULT_LIST {
-            positions[position.id!] = position.description
+            positions[position.id] = position.description
         }
         return positions
     }
     
     var id: Int?
-    var companyId: Int?
-    var name: String?
-    var positionId: Int?
-    var contact: String?
-    var address: String?
-    var logoKey: String?
+    var companyId: Int
+    var name: String
+    var positionId: Int
+    var contact: String
+    var address: String
+    var logoKey: String
     
     init(id: Int?=nil,
             companyId: Int,
             name: String,
             positionId: Int,
-            contact: String?,
-            address: String?,
+            contact: String,
+            address: String,
             logoKey: String) {
         self.id = id
         self.companyId = companyId

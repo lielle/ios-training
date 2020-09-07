@@ -142,9 +142,9 @@ extension EmployeeListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: EmployeeCell = tableView.dequeueReusableCell(withIdentifier: String(describing: EmployeeCell.self)) as! EmployeeCell
         let rowEmployee = employees[indexPath.row]
-        cell.logoImageView.image = getImage(named: (rowEmployee.logoKey)!)
+        cell.logoImageView.image = FileHelper.getImage(named: rowEmployee.logoKey)
         cell.nameLabel.text = rowEmployee.name
-        cell.positionLabel.text = Employee.DEFAULT_POSITIONS[rowEmployee.positionId!]
+        cell.positionLabel.text = Employee.DEFAULT_POSITIONS[rowEmployee.positionId]
         
         return cell
     }

@@ -11,19 +11,19 @@ import Foundation
 class Company: NSObject, Codable {
     
     var id: Int?
-    var name: String?
-    var username: String?
-    var password: String?
-    var contact: String?
-    var address: String?
-    var logoKey: String?
+    var name: String
+    var username: String
+    var password: String
+    var contact: String
+    var address: String
+    var logoKey: String
     
     init(id: Int?=nil,
              name: String,
              username: String,
              password: String,
-             contact: String?,
-             address: String?,
+             contact: String,
+             address: String,
              logoKey: String) {
         self.id = id
         self.name = name
